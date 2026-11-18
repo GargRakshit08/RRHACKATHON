@@ -1,0 +1,22 @@
+# Netlify internal state (never commit state.json)
+.netlify/
+
+# Node dependencies
+node_modules/
+.npm/
+
+# Large local files and datasets
+*.pkl
+Data Pack/
+*.csv
+*.pdf
+pdf_preview/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local environment variables
+.env
+.env.local
