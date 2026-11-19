@@ -954,18 +954,17 @@ function renderRoster() {
   }
   if (sectionSubEl) {
     sectionSubEl.textContent = isBatters
-      ? "Evaluated across 200,999 records on run velocity, dot suppression, wicket preservation, and chase finishes."
-      : "Evaluated across 200,999 records on field execution (dot %), run containment, death defense, and winning hauls.";
+      ? "Selected on Unstop submission dropdowns | Evaluated across 200,999 records on run velocity, dot suppression, chase finishes, and wicket security."
+      : "Selected on Unstop submission dropdowns | Evaluated across 200,999 records on dot-ball field execution, run containment, death defense, and winning hauls.";
   }
 
   dossierListEl.innerHTML = dataset.map((player, index) => {
     const isEven = (index % 2 === 1);
     const rowClass = isEven ? 'even-row' : 'odd-row';
-    const animationClass = isEven ? 'reveal-right' : 'reveal-left';
     const rankPadded = String(player.rank).padStart(2, '0');
 
     return `
-      <article class="player-telemetry-card ${rowClass} ${disciplineClass} ${animationClass}" id="player-${player.rank}">
+      <article class="player-telemetry-card ${rowClass} ${disciplineClass}" id="player-${player.rank}">
 
         <!-- Visual Media Anchor -->
         <div class="card-visual-anchor">
@@ -1034,7 +1033,7 @@ function renderRoster() {
             </div>
           </div>
 
-          <!-- 4-Cell Telemetry Metric Matrix -->
+          <!-- 4-Cell Telemetry Metric Matrix (No awkward wrapping) -->
           <div class="telemetry-grid">
             ${player.metrics.map(m => `
               <div class="telemetry-cell">
@@ -1045,9 +1044,9 @@ function renderRoster() {
             `).join('')}
           </div>
 
-          <!-- Integrated Intelligence Briefing -->
+          <!-- Twin Editorial Briefing Panels (Scout Observation & Quantitative Proof) -->
           <div class="intel-briefing-wrap">
-            <!-- Scout's Personal Observation -->
+            <!-- Scout's Personal Field Observation -->
             <div class="intel-block scout-block">
               <div class="intel-header">
                 <span class="intel-icon">👁️</span>
@@ -1071,27 +1070,6 @@ function renderRoster() {
       </article>
     `;
   }).join('');
-
-  observeScrollReveals();
-}
-
-function observeScrollReveals() {
-  const elements = document.querySelectorAll('.reveal-left, .reveal-right, .reveal-fade');
-  if (!elements.length) return;
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        obs.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.08,
-    rootMargin: '0px 0px -40px 0px'
-  });
-
-  elements.forEach(el => observer.observe(el));
 }
 
 function setRosterMode(mode) {
@@ -1124,6 +1102,159 @@ window.switchToBowlersAndScroll = function() {
   }
 };
 
+// ==========================================================================
+// Interactive Formula & Weight Inspector
+// ==========================================================================
+window.setInspectorTab = function(type) {
+  const batterBtn = document.getElementById('inspectBatterTab');
+  const bowlerBtn = document.getElementById('inspectBowlerTab');
+  if (batterBtn && bowlerBtn) {
+    if (type === 'batter') {
+      batterBtn.classList.add('active');
+      bowlerBtn.classList.remove('active');
+    } else {
+      bowlerBtn.classList.add('active');
+      batterBtn.classList.remove('active');
+    }
+  }
+  renderInspectorContent(type);
+};
+
+function renderInspectorContent(type) {
+  const container = document.getElementById('inspectorContent');
+  if (!container) return;
+
+  if (type === 'batter') {
+    container.innerHTML = `
+      <div style="overflow-x: auto;">
+        <table class="data-table" style="font-size: 0.8rem;">
+          <thead>
+            <tr>
+              <th>Player</th>
+              <th>Pressure SR (20%)</th>
+              <th>Dot % (20% Pen.)</th>
+              <th>Chase Wins (15%)</th>
+              <th>Boundary % (15%)</th>
+              <th>Wicket Sec. (10%)</th>
+              <th>Normalized BTTS</th>
+              <th>Official Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight: 700; color: #fff;">Tim David</td>
+              <td class="tabular highlight-badge">181.52 (Z = +2.42)</td>
+              <td class="tabular">30.4% (Z = +1.15)</td>
+              <td class="tabular highlight-badge">15 Wins (Z = +1.95)</td>
+              <td class="tabular">25.7% (Z = +1.65)</td>
+              <td class="tabular">16.9 (Z = +0.72)</td>
+              <td class="tabular highlight-badge" style="font-size: 0.95rem;">+1.889</td>
+              <td class="tabular highlight-badge" style="font-weight: 900;">#01</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 700; color: #fff;">Tilak Varma</td>
+              <td class="tabular">149.49 (Z = +0.85)</td>
+              <td class="tabular">30.4% (Z = +1.15)</td>
+              <td class="tabular highlight-badge">21 Wins (Z = +2.80)</td>
+              <td class="tabular">18.8% (Z = +0.60)</td>
+              <td class="tabular highlight-green">27.1 (Z = +1.85)</td>
+              <td class="tabular highlight-badge" style="font-size: 0.95rem;">+1.745</td>
+              <td class="tabular highlight-badge" style="font-weight: 900;">#02</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 700; color: #fff;">Virat Kohli</td>
+              <td class="tabular">157.70 (Z = +1.20)</td>
+              <td class="tabular highlight-green">27.7% (Z = +1.68)</td>
+              <td class="tabular">9 Wins (Z = +1.10)</td>
+              <td class="tabular">21.5% (Z = +1.02)</td>
+              <td class="tabular highlight-green">27.2 (Z = +1.87)</td>
+              <td class="tabular highlight-badge" style="font-size: 0.95rem;">+1.620</td>
+              <td class="tabular highlight-badge" style="font-weight: 900;">#03</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 700; color: #fff;">Heinrich Klaasen</td>
+              <td class="tabular highlight-badge">173.61 (Z = +2.05)</td>
+              <td class="tabular highlight-green">25.3% (Z = +2.10)</td>
+              <td class="tabular">5 Wins (Z = +0.55)</td>
+              <td class="tabular">23.0% (Z = +1.25)</td>
+              <td class="tabular">20.6 (Z = +1.15)</td>
+              <td class="tabular highlight-badge" style="font-size: 0.95rem;">+1.512</td>
+              <td class="tabular highlight-badge" style="font-weight: 900;">#05</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); line-height: 1.6;">
+        <strong>Key Analytical Takeaway:</strong> While Tilak Varma leads in Chase Finishes (21 wins) and Virat Kohli leads in Wicket Security (27.2 BPD), Tim David claims Rank #1 due to his unprecedented dual-dominance in Death Strike Rate (199.81) and 15 chase finishes without getting dismissed.
+      </div>
+    `;
+  } else {
+    container.innerHTML = `
+      <div style="overflow-x: auto;">
+        <table class="data-table" style="font-size: 0.8rem;">
+          <thead>
+            <tr>
+              <th>Player</th>
+              <th>Dot % (20%)</th>
+              <th>Pressure Econ (20% Pen.)</th>
+              <th>Death Wickets (20%)</th>
+              <th>Part. Breakers (20%)</th>
+              <th>Winning Hauls (20%)</th>
+              <th>Normalized BoTTS</th>
+              <th>Official Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight: 700; color: #fff;">Josh Hazlewood</td>
+              <td class="tabular highlight-badge">43.4% (Z = +2.55)</td>
+              <td class="tabular">8.17 (Z = +1.10)</td>
+              <td class="tabular">30 Wkts (Z = +1.25)</td>
+              <td class="tabular">8 Breaks (Z = +0.70)</td>
+              <td class="tabular highlight-badge">14 Hauls (Z = +1.90)</td>
+              <td class="tabular highlight-badge" style="font-size: 0.95rem;">+1.792</td>
+              <td class="tabular highlight-badge" style="font-weight: 900; color: var(--accent-cyan);">#01</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 700; color: #fff;">Jasprit Bumrah</td>
+              <td class="tabular">42.5% (Z = +2.38)</td>
+              <td class="tabular highlight-green">7.00 (Z = +2.60)</td>
+              <td class="tabular">35 Wkts (Z = +1.45)</td>
+              <td class="tabular">13 Breaks (Z = +1.15)</td>
+              <td class="tabular">12 Hauls (Z = +1.60)</td>
+              <td class="tabular highlight-badge" style="font-size: 0.95rem;">+1.765</td>
+              <td class="tabular highlight-badge" style="font-weight: 900; color: var(--accent-cyan);">#02</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 700; color: #fff;">Arshdeep Singh</td>
+              <td class="tabular">36.8% (Z = +1.35)</td>
+              <td class="tabular">8.81 (Z = +0.35)</td>
+              <td class="tabular highlight-badge">75 Wkts (Z = +3.10)</td>
+              <td class="tabular highlight-badge">33 Breaks (Z = +2.85)</td>
+              <td class="tabular highlight-badge">18 Hauls (Z = +2.35)</td>
+              <td class="tabular highlight-badge" style="font-size: 0.95rem;">+1.720</td>
+              <td class="tabular highlight-badge" style="font-weight: 900; color: var(--accent-cyan);">#03</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 700; color: #fff;">Rashid Khan</td>
+              <td class="tabular">36.0% (Z = +1.20)</td>
+              <td class="tabular highlight-green">7.46 (Z = +1.95)</td>
+              <td class="tabular">51 Wkts (Z = +2.15)</td>
+              <td class="tabular">22 Breaks (Z = +1.80)</td>
+              <td class="tabular highlight-badge">19 Hauls (Z = +2.48)</td>
+              <td class="tabular highlight-badge" style="font-size: 0.95rem;">+1.695</td>
+              <td class="tabular highlight-badge" style="font-weight: 900; color: var(--accent-cyan);">#04</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); line-height: 1.6;">
+        <strong>Key Analytical Takeaway:</strong> Hazlewood edges Bumrah by the slimmest margin on pure field execution (43.4% dot percentage creating immense cumulative pressure), while Bumrah represents the absolute gold standard in death-over run containment (7.19 RPO).
+      </div>
+    `;
+  }
+}
+
 function setupSwitcher() {
   if (switchBattersBtn) {
     switchBattersBtn.addEventListener('click', () => setRosterMode('batters'));
@@ -1155,5 +1286,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSwitcher();
   setupNavLinks();
   renderRoster();
-  observeScrollReveals();
+  renderInspectorContent('batter');
 });

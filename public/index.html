@@ -1,644 +1,952 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RRHACKATHON | Rajasthan Royals SupeRR Selector Analytics Think-Tank</title>
-  <meta name="description" content="Rajasthan Royals - SupeRR Selector Season 2 Official Analytics Think-Tank Report: Player Under Pressure Rankings, Dual-Engine Framework, and Methodological Proof.">
+  <title>RRHACKATHON — SupeRR Selector Season 2 | Rajasthan Royals Analytics Think-Tank</title>
+  <meta name="description" content="Official Rajasthan Royals SupeRR Selector Think-Tank Dashboard: Top 10 Batters and Bowlers Under Pressure, Dual-Engine Win-Probability Pipeline, and Scientific Proof across 200,999 Deliveries.">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/rr-logo.png">
 
-  <!-- Typography -->
+  <!-- Human-Crafted Typography Ramp: Bricolage Grotesque (Editorial Punch), Plus Jakarta Sans (Clean UI), Space Mono (Technical Data) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- KaTeX for crisp, publication-grade mathematical equations -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="theme-obsidian">
+
+  <!-- Architectural Background Vector Blueprint & Texture Grid -->
+  <div class="bg-blueprint-layer" aria-hidden="true">
+    <div class="blueprint-grid"></div>
+    <div class="blueprint-ambient-warmth"></div>
+    
+    <!-- Subtle Architectural Vector Watermarks (Drafting Lines & Pitch Radar) -->
+    <svg class="blueprint-svg svg-top-right" viewBox="0 0 400 400" fill="none" stroke="currentColor">
+      <circle cx="200" cy="200" r="160" stroke-width="1.2" stroke="rgba(255, 255, 255, 0.08)"/>
+      <circle cx="200" cy="200" r="100" stroke-width="1.5" stroke="rgba(255, 93, 0, 0.25)"/>
+      <circle cx="200" cy="200" r="30" stroke-width="1.2" stroke="rgba(255, 255, 255, 0.15)"/>
+      <line x1="200" y1="20" x2="200" y2="380" stroke-width="1" stroke="rgba(255, 255, 255, 0.06)" stroke-dasharray="4 4"/>
+      <line x1="20" y1="200" x2="380" y2="200" stroke-width="1" stroke="rgba(255, 255, 255, 0.06)" stroke-dasharray="4 4"/>
+      <rect x="140" y="160" width="120" height="80" rx="4" stroke="rgba(255, 93, 0, 0.35)" stroke-width="1.2"/>
+      <text x="148" y="180" fill="rgba(255, 93, 0, 0.6)" font-size="10" font-family="monospace">PITCH_ZONE // 22 YDS</text>
+      <text x="148" y="225" fill="rgba(255, 255, 255, 0.4)" font-size="9" font-family="monospace">LEVERAGE_INDEX &ge; 1.25</text>
+    </svg>
+
+    <svg class="blueprint-svg svg-mid-left" viewBox="0 0 360 360" fill="none" stroke="currentColor">
+      <polygon points="180,40 310,180 180,320 50,180" stroke="rgba(255, 255, 255, 0.07)" stroke-width="1.5"/>
+      <circle cx="180" cy="180" r="70" stroke="rgba(0, 210, 211, 0.2)" stroke-width="1.2"/>
+      <line x1="50" y1="180" x2="310" y2="180" stroke="rgba(255, 255, 255, 0.06)" stroke-dasharray="3 3"/>
+      <line x1="180" y1="40" x2="180" y2="320" stroke="rgba(255, 255, 255, 0.06)" stroke-dasharray="3 3"/>
+      <text x="70" y="172" fill="rgba(0, 210, 211, 0.5)" font-size="9" font-family="monospace">WIN_PROB_ENGINE [LOGIT]</text>
+    </svg>
+  </div>
 
   <!-- ==========================================================================
-       Navigation Bar
+       Navigation Bar (Frosted Obsidian Glass, Clean Architectural Typography)
        ========================================================================== -->
   <nav class="main-nav">
-    <a href="#" class="brand-link">
-      <img src="assets/rr-logo.png" alt="Rajasthan Royals Official Crest" class="nav-crest">
-      <div class="brand-text">
-        <span class="brand-title">RRHACKATHON <span style="color: var(--kinpaku-gold);">• THINK-TANK</span></span>
-        <span class="brand-badge">SupeRR Selector Season 2</span>
+    <div class="nav-container">
+      <a href="#" class="brand-link">
+        <div class="brand-badge-box">RR</div>
+        <div class="brand-meta">
+          <div class="brand-title">
+            <span>RRHACKATHON</span>
+            <span class="slash-sep">/</span>
+            <span class="sub-brand">THINK-TANK</span>
+          </div>
+          <div class="brand-sub">SupeRR Selector Season 2</div>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="#hero-stage" class="nav-anchor active">Overview</a>
+        <a href="#pipeline-architecture" class="nav-anchor">Methodology Pipeline</a>
+        <a href="#mathematical-formulation" class="nav-anchor">Formulas & Weights</a>
+        <a href="#roster-view" class="nav-anchor">Player Dossiers</a>
+        <a href="#master-tables" class="nav-anchor">Master Tables</a>
+        <a href="#validation-proof" class="nav-anchor">Scientific Proof</a>
       </div>
-    </a>
 
-    <div class="nav-menu">
-      <a href="#roster-view" class="nav-item active">Player Dossiers</a>
-      <a href="#pipeline-flow" class="nav-item">Methodology Pipeline</a>
-      <a href="#master-tables" class="nav-item">Official Tables</a>
-      <a href="#validation-proof" class="nav-item">Scientific Validation</a>
-    </div>
-
-    <div class="nav-status">
-      <span class="pulse-dot"></span>
-      200,999 Deliveries Evaluated
+      <div class="nav-status-badge">
+        <span class="status-pulse-dot"></span>
+        <span class="status-text">200,999 BALLS</span>
+        <span class="status-divider">|</span>
+        <span class="status-sub">LI &ge; 1.25</span>
+      </div>
     </div>
   </nav>
 
   <!-- ==========================================================================
-       Hero Section: Stadium Floodlights & Master Blaster Action Backdrop
+       Hero Section (Architectural Editorial, Stadium Backdrop, Master Blaster Shot)
        ========================================================================== -->
-  <header class="hero-stage">
-    <div class="hero-bg-layer">
-      <!-- Stadium Floodlights Background -->
+  <header class="hero-stage" id="hero-stage">
+    <div class="hero-backdrop-container">
       <img src="assets/stadium_night.jpg" alt="Night Cricket Stadium Floodlights" class="hero-stadium-img">
-      <!-- Cricketer Striking a Clutch Shot Backdrop -->
       <img src="assets/cricket_hero_shot.jpg" alt="Cricketer Unleashing Clutch Shot" class="hero-action-backdrop">
-      <div class="hero-gradient-overlay"></div>
+      <div class="hero-matte-overlay"></div>
     </div>
 
-    <div class="hero-content reveal-fade">
-      <div class="hero-pretitle">
-        <span>⚡ RRHACKATHON • SPORTS TELEMETRY & THINK-TANK</span>
+    <div class="hero-content-wrapper">
+      <!-- Eyebrow Pill Tag -->
+      <div class="hero-eyebrow-pill">
+        <span class="pulse-indicator"></span>
+        <span class="eyebrow-code">SUPERR SELECTOR // OFFICIAL THINK-TANK REPORT</span>
+        <span class="eyebrow-divider">/</span>
+        <span class="eyebrow-highlight">200,999 BALLS EVALUATED</span>
       </div>
 
-            <h1 class="hero-headline">
-        When Seconds Stop.<br>
-        <span class="gold-span">Delivery Decides</span> <span class="mint-span">Destiny.</span>
+      <!-- Massive Bricolage Grotesque Editorial Headline -->
+      <h1 class="hero-headline">
+        WHEN SECONDS STOP.<br>
+        <span class="headline-fire">DELIVERY DECIDES</span>
+        <span class="headline-ice">DESTINY.</span>
       </h1>
 
-      <p class="hero-lead">
-        In high-stakes T20 cricket, reputations frequently obscure real execution under crisis.
-        A batter can accumulate hollow runs during low-leverage middle overs, and a bowler can pad economy against tailenders in dead rubbers.
-        The Rajasthan Royals Analytics Think-Tank isolates players whose performance surges when single deliveries swing match victory probability.
+      <!-- Architectural Subtitle with Divider Rule -->
+      <div class="hero-subtitle-row">
+        <span class="subtitle-text">CLUTCH PERFORMANCE IS NOT AN ACCIDENT</span>
+        <span class="subtitle-rule"></span>
+        <span class="subtitle-badge">TOP 10 BATTERS & BOWLERS</span>
+      </div>
+
+      <!-- Human-Crafted Editorial Lead -->
+      <p class="hero-editorial-lead">
+        In high-stakes T20 cricket, reputations frequently obscure real execution under crisis. 
+        A batter can accumulate hollow runs during low-leverage middle overs, and a bowler can pad economy numbers against lower-order tailenders in dead rubbers. 
+        The <strong>Rajasthan Royals Analytics Think-Tank</strong> framework isolates players whose performance surges when single deliveries swing match victory probability.
       </p>
 
-      <!-- Quick Action Navigation Cluster in Hero -->
+      <!-- Primary Action Buttons Cluster -->
       <div class="hero-actions-cluster">
-        <button class="hero-action-pill pill-batters" onclick="switchToBattersAndScroll()">
-          <span class="pill-badge">🏏 DISCIPLINE 01</span>
-          <span class="pill-main">Explore Top 10 Batters</span>
-          <span class="pill-sub">Solar Amber • Power Closers</span>
+        <button class="hero-btn btn-batters" onclick="switchToBattersAndScroll()">
+          <span class="btn-icon">🏏</span>
+          <span class="btn-text">Explore Top 10 Batters</span>
+          <span class="btn-arrow">&rarr;</span>
         </button>
 
-        <button class="hero-action-pill pill-bowlers" onclick="switchToBowlersAndScroll()">
-          <span class="pill-badge">🎯 DISCIPLINE 02</span>
-          <span class="pill-main">Explore Top 10 Bowlers</span>
-          <span class="pill-sub">Electric Cyan • Death Defense</span>
+        <button class="hero-btn btn-bowlers" onclick="switchToBowlersAndScroll()">
+          <span class="btn-icon">🎯</span>
+          <span class="btn-text">Explore Top 10 Bowlers</span>
+          <span class="btn-arrow">&rarr;</span>
         </button>
 
-        <a href="#pipeline-flow" class="hero-action-pill pill-pipeline">
-          <span class="pill-badge">🧠 DATA PIPELINE</span>
-          <span class="pill-main">Methodology Architecture</span>
-          <span class="pill-sub">Dual-Engine Win Probability</span>
+        <a href="#pipeline-architecture" class="hero-btn btn-methodology">
+          <span class="btn-icon">📐</span>
+          <span class="btn-text">Inspect Methodology & Math</span>
+          <span class="btn-arrow">&darr;</span>
         </a>
       </div>
 
-      <!-- Dynamic Game-State Metrics Strip -->
-      <div class="leverage-banner">
-        <div class="leverage-stat">
-          <div class="leverage-num tabular gold-text">200,999</div>
-          <div class="leverage-lbl">Historical Balls Analyzed</div>
+      <!-- Telemetry Game-State Cards Strip (Clean Matte Physical Borders) -->
+      <div class="hero-telemetry-strip">
+        <div class="telemetry-stat-card">
+          <div class="stat-meta">
+            <span class="stat-label">RAW INGESTION</span>
+            <span class="stat-tag">[STAGE 01]</span>
+          </div>
+          <div class="stat-number tabular">200,999</div>
+          <div class="stat-desc">Historical Deliveries (2022–2026)</div>
         </div>
-        <div class="leverage-stat">
-          <div class="leverage-num tabular" style="color: var(--verdigris-mint);">98,752</div>
-          <div class="leverage-lbl">High-Pressure Balls (49.1%)</div>
+
+        <div class="telemetry-stat-card">
+          <div class="stat-meta">
+            <span class="stat-label">HIGH-PRESSURE FILTER</span>
+            <span class="stat-tag highlight-orange">[49.1%]</span>
+          </div>
+          <div class="stat-number tabular color-orange">98,752</div>
+          <div class="stat-desc">Crisis Balls Isolated (LI &ge; 1.25)</div>
         </div>
-        <div class="leverage-stat">
-          <div class="leverage-num tabular" style="color: var(--kinpaku-gold);">LI &ge; 1.25</div>
-          <div class="leverage-lbl">Dynamic Leverage Index</div>
+
+        <div class="telemetry-stat-card">
+          <div class="stat-meta">
+            <span class="stat-label">LEVERAGE INDEX</span>
+            <span class="stat-tag highlight-cyan">[TOP 30%]</span>
+          </div>
+          <div class="stat-number tabular color-cyan">LI &ge; 1.25</div>
+          <div class="stat-desc">Critical Win-Probability Swings</div>
         </div>
-        <div class="leverage-stat">
-          <div class="leverage-num tabular" style="color: #ffffff;">883</div>
-          <div class="leverage-lbl">Matches Evaluated</div>
+
+        <div class="telemetry-stat-card">
+          <div class="stat-meta">
+            <span class="stat-label">EVALUATED MATCHES</span>
+            <span class="stat-tag">[SAMPLE]</span>
+          </div>
+          <div class="stat-number tabular">883</div>
+          <div class="stat-desc">IPL & Elite T20 Internationals</div>
         </div>
       </div>
     </div>
   </header>
 
   <!-- ==========================================================================
-       Primary Roster Switcher: Batters vs Bowlers
+       MAJOR CENTERPIECE: METHODOLOGY PIPELINE & DATA DERIVATION ARCHITECTURE
+       ========================================================================== -->
+  <section class="section-container" id="pipeline-architecture">
+    <div class="section-header">
+      <div class="section-tag-pill">
+        <span class="tag-dot"></span>
+        <span>ARCHITECTURAL DATA ENGINE // HOW WE ARRIVED AT THE CONCLUSION</span>
+      </div>
+      <h2 class="section-title">The Scientific Data Pipeline</h2>
+      <p class="section-lead">
+        We did not rely on subjective reputation or raw aggregate averages. Every single ranking is the output of a 
+        5-stage quantitative pipeline isolating high-leverage execution from statistical noise across 200,999 deliveries.
+      </p>
+    </div>
+
+    <!-- Visual Interactive 5-Stage Architecture Flowchart -->
+    <div class="pipeline-flowchart-card">
+      <div class="flowchart-header-row">
+        <div class="flowchart-title">
+          <span class="flow-icon">⚡</span>
+          <span>End-to-End Decision & Telemetry Pipeline</span>
+        </div>
+        <div class="flowchart-badge">DUAL-ENGINE ARCHITECTURE</div>
+      </div>
+
+      <div class="flowchart-grid">
+        <!-- Stage 01 -->
+        <div class="flowchart-node">
+          <div class="node-badge">01. INGESTION</div>
+          <h4 class="node-title">200,999 Raw Records</h4>
+          <p class="node-body">
+            Full ball-by-ball telemetry ingested across 883 matches (IPL & T20I, 2022–2026). Each record holds the instantaneous game state: $\{RunsNeeded, BallsLeft, WicketsInHand, RRR, Phase\}$.
+          </p>
+          <div class="node-footer-meta">
+            <span>Input: 200,999 legal balls</span>
+          </div>
+        </div>
+
+        <!-- Connection Arrow -->
+        <div class="flow-connector" aria-hidden="true">&rarr;</div>
+
+        <!-- Stage 02: Dual Engines -->
+        <div class="flowchart-node highlight-bifurcation">
+          <div class="node-badge color-orange">02. DUAL-ENGINE FILTER</div>
+          <h4 class="node-title">Win-Probability & Crisis Rules</h4>
+          <p class="node-body">
+            <strong>Engine 1:</strong> Logistic regression models $P(\text{Win})$ to isolate deliveries with Leverage Index $LI_t \ge 1.25$.<br>
+            <strong>Engine 2:</strong> Contextual crisis rules: RRR &ge; 9.5 (overs 11–20), death overs 16–20, collapse recovery (&le;15/3), super overs.
+          </p>
+          <div class="node-footer-meta color-orange">
+            <span>Result: 98,752 High-Pressure Balls (49.1%)</span>
+          </div>
+        </div>
+
+        <!-- Connection Arrow -->
+        <div class="flow-connector" aria-hidden="true">&rarr;</div>
+
+        <!-- Stage 03: Noise Filtering -->
+        <div class="flowchart-node">
+          <div class="node-badge">03. SAMPLE THRESHOLDS</div>
+          <h4 class="node-title">Statistical Noise Cutoff</h4>
+          <p class="node-body">
+            To prevent small-sample anomalies from inflating rankings, strict minimums were applied:
+            <strong>&ge; 150 pressure balls</strong> for batters; 
+            <strong>&ge; 180 pressure balls (30 overs)</strong> for bowlers. Filtered strictly to the 477 registered IPL player pool matching Unstop dropdowns.
+          </p>
+          <div class="node-footer-meta">
+            <span>Qualified: ~190 Core Contenders</span>
+          </div>
+        </div>
+
+        <!-- Connection Arrow -->
+        <div class="flow-connector" aria-hidden="true">&rarr;</div>
+
+        <!-- Stage 04: Standardization -->
+        <div class="flowchart-node highlight-cyan">
+          <div class="node-badge color-cyan">04. Z-SCORE SCORING</div>
+          <h4 class="node-title">BTTS & BoTTS Composite</h4>
+          <p class="node-body">
+            Metrics are normalized into standardized Z-scores $Z(X) = \frac{X - \mu}{\sigma}$ to compare disparate dimensions (strike rates, dot rates, chase wins, death wickets) on an identical baseline.
+          </p>
+          <div class="node-footer-meta color-cyan">
+            <span>Output: Standardized Think-Tank Scores</span>
+          </div>
+        </div>
+
+        <!-- Connection Arrow -->
+        <div class="flow-connector" aria-hidden="true">&rarr;</div>
+
+        <!-- Stage 05: Validation -->
+        <div class="flowchart-node">
+          <div class="node-badge">05. CROSS-VALIDATION</div>
+          <h4 class="node-title">Split-Half Reliability</h4>
+          <p class="node-body">
+            Odd vs. Even matches benchmarked across all qualified players. Statistically validates individual clutch traits ($r = 0.382, p < 10^{-8}$) over random variance.
+          </p>
+          <div class="node-footer-meta">
+            <span>Validation: $p < 1.2 \times 10^{-6}$</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         MATHEMATICAL FORMULATIONS & EQUATION CARDS
+         ====================================================================== -->
+    <div class="math-architecture-grid" id="mathematical-formulation">
+
+      <!-- Leverage Index Equation Card -->
+      <div class="math-card">
+        <div class="math-card-header">
+          <div class="math-card-badge">ENGINE 01 // DYNAMIC VOLATILITY</div>
+          <h3 class="math-card-title">Dynamic Leverage Index ($LI_t$)</h3>
+        </div>
+        <div class="math-equation-display">
+          $$LI_t = \frac{\max_{c \in \Omega} \Delta P(\text{Win} \mid c) - \min_{c \in \Omega} \Delta P(\text{Win} \mid c)}{\mathbb{E}_{\text{match}}[\Delta P(\text{Win})]}$$
+        </div>
+        <p class="math-card-explanation">
+          Calculates the maximum win-probability swing possible on ball $t$ across all possible outcomes $\Omega = \{\text{Dot}, \text{Single}, \text{Four}, \text{Six}, \text{Wicket}\}$, normalized by the average swing per ball in T20 matches.
+          Deliveries with <strong>$LI_t \ge 1.25$</strong> define the top 30% volatility events where matches are won or lost.
+        </p>
+        <div class="math-variables-list">
+          <div class="math-var-item">
+            <span class="var-name">$\Delta P(\text{Win})$</span>
+            <span class="var-desc">Instantaneous shift in winning percentage from ball $t-1$ to $t$</span>
+          </div>
+          <div class="math-var-item">
+            <span class="var-name">$LI_t \ge 1.25$</span>
+            <span class="var-desc">Critical threshold isolating the 49.1% high-pressure dataset</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Batter Think-Tank Score (BTTS) Equation Card -->
+      <div class="math-card card-accent-orange">
+        <div class="math-card-header">
+          <div class="math-card-badge color-orange">BATTERS // COMPOSITE FORMULA</div>
+          <h3 class="math-card-title">Batter Think-Tank Score ($\text{BTTS}$)</h3>
+        </div>
+        <div class="math-equation-display color-orange">
+          $$\text{BTTS} = 0.20 \cdot Z(\text{Runs}) + 0.20 \cdot Z(\text{SR}_{\text{press}}) - 0.20 \cdot Z(\text{Dot}\%) + 0.15 \cdot Z(\text{Bound}\%) + 0.15 \cdot Z(\text{ChaseWins}) + 0.10 \cdot Z(\ln(1 + \text{BPD}))$$
+        </div>
+        <p class="math-card-explanation">
+          Balances raw scoring volume ($20\%$) and strike-rate velocity under pressure ($20\%$) while severely penalizing dot balls ($20\%$).
+          Heavily rewards finishers remaining not out in successful chases ($15\%$) and penalizes wicket-throwing via log-scaled Balls Per Dismissal ($10\%$).
+        </p>
+        
+        <!-- Parameter Weights Visual Breakdown -->
+        <div class="weight-bars-cluster">
+          <div class="weight-item">
+            <div class="weight-header">
+              <span>Pressure Runs $Z(\text{Runs})$</span>
+              <span class="weight-pct">20% Weight</span>
+            </div>
+            <div class="weight-track"><div class="weight-fill fill-orange" style="width: 20%;"></div></div>
+          </div>
+          <div class="weight-item">
+            <div class="weight-header">
+              <span>Pressure Strike Rate $Z(\text{SR}_{\text{press}})$</span>
+              <span class="weight-pct">20% Weight</span>
+            </div>
+            <div class="weight-track"><div class="weight-fill fill-orange" style="width: 20%;"></div></div>
+          </div>
+          <div class="weight-item">
+            <div class="weight-header">
+              <span>Dot Suppression $-Z(\text{Dot}\%)$</span>
+              <span class="weight-pct">20% Penalty</span>
+            </div>
+            <div class="weight-track"><div class="weight-fill fill-orange" style="width: 20%;"></div></div>
+          </div>
+          <div class="weight-item">
+            <div class="weight-header">
+              <span>Boundary Velocity $Z(\text{Bound}\%)$</span>
+              <span class="weight-pct">15% Weight</span>
+            </div>
+            <div class="weight-track"><div class="weight-fill fill-orange" style="width: 15%;"></div></div>
+          </div>
+          <div class="weight-item">
+            <div class="weight-header">
+              <span>Chase Finishes $Z(\text{ChaseWins})$</span>
+              <span class="weight-pct">15% Weight</span>
+            </div>
+            <div class="weight-track"><div class="weight-fill fill-orange" style="width: 15%;"></div></div>
+          </div>
+          <div class="weight-item">
+            <div class="weight-header">
+              <span>Wicket Security $Z(\ln(1 + \text{BPD}))$</span>
+              <span class="weight-pct">10% Weight</span>
+            </div>
+            <div class="weight-track"><div class="weight-fill fill-orange" style="width: 10%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bowler Think-Tank Score (BoTTS) Equation Card -->
+      <div class="math-card card-accent-cyan">
+        <div class="math-card-header">
+          <div class="math-card-badge color-cyan">BOWLERS // COMPOSITE FORMULA</div>
+          <h3 class="math-card-title">Bowler Think-Tank Score ($\text{BoTTS}$)</h3>
+        </div>
+        <div class="math-equation-display color-cyan">
+          $$\text{BoTTS} = 0.20 \cdot Z(\text{Dot}\%) - 0.20 \cdot Z(\text{Econ}_{\text{press}}) + 0.20 \cdot Z(\text{DeathWkts}) + 0.20 \cdot Z(\text{PartBreakWkts}) + 0.20 \cdot Z(\text{WinningHauls})$$
+        </div>
+        <p class="math-card-explanation">
+          Constructs an equilibrium between defensive run containment ($20\%$ dot suppression & $-20\%$ economy penalty) and lethal strike-point breakthroughs:
+          overs 16–20 death dismissals ($20\%$), breaking established 30+ momentum partnerships ($20\%$), and converting high-leverage spells into match victories ($20\%$).
+        </p>
+
+        <!-- Parameter Weights Visual Breakdown -->
+        <div class="weight-bars-cluster">
+          <div class="weight-item">
+            <div class="weight-header">
+              <span>Dot Ball Execution $Z(\text{Dot}\%)$</span>
+              <span class="weight-pct">20% Weight</span>
+            </div>
+            <div class="weight-track"><div class="weight-fill fill-cyan" style="width: 20%;"></div></div>
+          </div>
+          <div class="weight-item">
+            <div class="weight-header">
+              <span>Run Containment $-Z(\text{Econ}_{\text{press}})$</span>
+              <span class="weight-pct">20% Penalty</span>
+            </div>
+            <div class="weight-track"><div class="weight-fill fill-cyan" style="width: 20%;"></div></div>
+          </div>
+          <div class="weight-item">
+            <div class="weight-header">
+              <span>Death Wickets (16–20) $Z(\text{DeathWkts})$</span>
+              <span class="weight-pct">20% Weight</span>
+            </div>
+            <div class="weight-track"><div class="weight-fill fill-cyan" style="width: 20%;"></div></div>
+          </div>
+          <div class="weight-item">
+            <div class="weight-header">
+              <span>Partnership Breakers $Z(\text{PartBreakWkts})$</span>
+              <span class="weight-pct">20% Weight</span>
+            </div>
+            <div class="weight-track"><div class="weight-fill fill-cyan" style="width: 20%;"></div></div>
+          </div>
+          <div class="weight-item">
+            <div class="weight-header">
+              <span>Match-Winning Hauls $Z(\text{WinningHauls})$</span>
+              <span class="weight-pct">20% Weight</span>
+            </div>
+            <div class="weight-track"><div class="weight-fill fill-cyan" style="width: 20%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Interactive Formula Inspector & Weight Explorer -->
+    <div class="interactive-inspector-box">
+      <div class="inspector-header">
+        <div class="inspector-title">
+          <span class="terminal-dot"></span>
+          <span>INTERACTIVE THINK-TANK WEIGHT EXPLORER</span>
+        </div>
+        <div class="inspector-sub">Inspect how individual player telemetry translates into standardized scores</div>
+      </div>
+
+      <div class="inspector-body">
+        <div class="inspector-controls">
+          <button class="inspector-tab active" id="inspectBatterTab" onclick="setInspectorTab('batter')">
+            🏏 Inspect Batter Scoring Dynamics (Tim David vs Tilak Varma)
+          </button>
+          <button class="inspector-tab" id="inspectBowlerTab" onclick="setInspectorTab('bowler')">
+            🎯 Inspect Bowler Scoring Dynamics (Hazlewood vs Bumrah)
+          </button>
+        </div>
+
+        <div class="inspector-content" id="inspectorContent">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PRIMARY ROSTER SWITCHER: TOP 10 BATTERS VS TOP 10 BOWLERS
        ========================================================================== -->
   <section class="roster-switch-section" id="roster-view">
-    <div class="roster-switch-container">
-      <button class="switch-btn batters-btn active" id="switchBatters">
-        <span>🏏 TOP 10 BATTERS</span>
-        <span class="count-pill">10 Closers & Anchors</span>
+    <div class="roster-switch-wrapper">
+      <button class="roster-tab-btn tab-batters active" id="switchBatters">
+        <span class="tab-icon">🏏</span>
+        <span class="tab-label">TOP 10 BATTERS UNDER PRESSURE</span>
+        <span class="tab-badge">10 Official Picks</span>
       </button>
-      <button class="switch-btn bowlers-btn" id="switchBowlers">
-        <span>🎯 TOP 10 BOWLERS</span>
-        <span class="count-pill">10 Field & Death Masters</span>
+
+      <button class="roster-tab-btn tab-bowlers" id="switchBowlers">
+        <span class="tab-icon">🎯</span>
+        <span class="tab-label">TOP 10 BOWLERS UNDER PRESSURE</span>
+        <span class="tab-badge">10 Official Picks</span>
       </button>
     </div>
   </section>
 
   <!-- ==========================================================================
-       Zig-Zag Player Dossier Showcase
+       ZIG-ZAG PLAYER DOSSIERS SECTION
        ========================================================================== -->
   <main class="dossier-section">
-    <div class="dossier-header-bar reveal-fade">
-      <h2 class="dossier-headline" id="sectionHeadline">
-        <span>🏏 OFFICIAL TOP 10 BATTERS UNDER PRESSURE</span>
+    <div class="dossier-headline-block">
+      <h2 class="dossier-main-headline" id="sectionHeadline">
+        <span class="headline-fire">🏏 TOP 10 BATTERS UNDER PRESSURE</span>
       </h2>
-      <p class="dossier-sub" id="sectionSub">
-        Selected on Unstop submission dropdowns | Evaluated on pure run velocity, dot resistance, chase finishes and wicket security.
+      <p class="dossier-sub-headline" id="sectionSub">
+        Selected on Unstop submission dropdowns | Evaluated on pure run velocity, dot suppression, chase finishes, and wicket security.
       </p>
     </div>
 
-    <!-- Alternating Zig-Zag Dossiers Rendered Dynamically -->
-    <div class="dossier-list" id="dossierList"></div>
+    <!-- Alternating Zig-Zag Dossier Cards Rendered by app.js -->
+    <div class="dossier-list" id="dossierList">
+      <!-- Dynamic render via app.js -->
+    </div>
   </main>
 
   <!-- ==========================================================================
-       Graphical Representation: The Methodology Pipeline
+       MASTER COMPARISON TABLES FOR UNSTOP REFERENCE
        ========================================================================== -->
-  <section class="graphical-flowchart-section" id="pipeline-flow">
-    <div class="dossier-header-bar reveal-fade">
-      <div class="hero-pretitle">
-        <span>🧠 Scientific Architecture</span>
+  <section class="section-container" id="master-tables">
+    <div class="section-header">
+      <div class="section-tag-pill">
+        <span class="tag-dot"></span>
+        <span>OFFICIAL UNSTOP BENCHMARK MATRICES</span>
       </div>
-      <h2 class="dossier-headline">How We Arrived At The Conclusion</h2>
-      <p class="dossier-sub">
-        The graphical data pipeline isolating elite pressure execution from 200,999 raw ball-by-ball records through dual mathematical engines.
-      </p>
-    </div>
-
-    <div class="flowchart-wrapper reveal-fade">
-      <!-- Step-by-Step Graphical Pipeline Grid -->
-      <div class="flowchart-step-grid">
-        <div class="flow-step-box">
-          <div class="flow-step-badge">Stage 01 • Ingestion</div>
-          <h4 class="flow-step-title">Ball-by-Ball Input Vector</h4>
-          <p class="flow-step-desc">
-            200,999 legal deliveries across 883 matches (IPL & T20I, 2022–2026). State vector tracks runs needed, balls left, wickets in hand, and required run rate (RRR).
-          </p>
-        </div>
-
-        <div class="flow-step-box" style="border-color: rgba(245, 158, 11, 0.4);">
-          <div class="flow-step-badge" style="color: var(--kinpaku-gold);">Stage 02 • Engine 1</div>
-          <h4 class="flow-step-title">Dynamic Win-Probability</h4>
-          <p class="flow-step-desc">
-            Logistic regression estimates <i>P</i>(Win) on second-innings chases. Measures Swing<sub>t</sub> between boundary, dot, and wicket outcomes. Deliveries with <strong>LI<sub>t</sub> &ge; 1.25</strong> (top 30% volatile) are isolated.
-          </p>
-        </div>
-
-        <div class="flow-step-box" style="border-color: rgba(16, 185, 129, 0.4);">
-          <div class="flow-step-badge" style="color: var(--verdigris-mint);">Stage 03 • Engine 2</div>
-          <h4 class="flow-step-title">Contextual Crisis Rules</h4>
-          <p class="flow-step-desc">
-            Tags 1st & 2nd innings crisis situations: RRR &ge; 9.5 in overs 11–20, early collapse rebuilding (&le;15/3), death acceleration (overs 16–20), playoffs, and super overs. Result: <strong>98,752 high-pressure balls (49.1%)</strong>.
-          </p>
-        </div>
-
-        <div class="flow-step-box">
-          <div class="flow-step-badge">Stage 04 • Calibration</div>
-          <h4 class="flow-step-title">Sample Filters & Era Par</h4>
-          <p class="flow-step-desc">
-            Eliminates small-sample anomalies via rigorous thresholds: Batters &ge; 150 balls; Bowlers &ge; 180 balls (30 full overs). Filtered strictly to the 477 registered IPL player pool matching Unstop dropdowns.
-          </p>
-        </div>
-      </div>
-
-      <!-- Mathematical Scoring Formulation Cards -->
-      <div class="formula-duo-grid">
-        <!-- BTTS -->
-        <div class="formula-card">
-          <div class="formula-card-header">
-            <span class="formula-name">🏏 Batter Think-Tank Score (BTTS)</span>
-            <span class="formula-weights">20% | 20% | 20% | 15% | 15% | 10%</span>
-          </div>
-          <div class="formula-equation">
-            BTTS = 0.20·Z(PressRuns) + 0.20·Z(SR_press) - 0.20·Z(Dot%) + 0.15·Z(Bound%) + 0.15·Z(ChaseFinishes) + 0.10·Z(ln(1 + BPD))
-          </div>
-          <p class="formula-logic">
-            Standardizes run volume and boundary velocity while heavily penalizing dot-ball accumulation under crisis. Specifically rewards finishers remaining not out in winning chases and penalizes reckless wicket-throwing via natural log of Balls Per Dismissal.
-          </p>
-        </div>
-
-        <!-- BoTTS -->
-        <div class="formula-card">
-          <div class="formula-card-header">
-            <span class="formula-name" style="color: var(--verdigris-mint);">🎯 Bowler Think-Tank Score (BoTTS)</span>
-            <span class="formula-weights" style="color: var(--verdigris-mint);">20% | 20% | 20% | 20% | 20%</span>
-          </div>
-          <div class="formula-equation" style="color: #a5f3fc;">
-            BoTTS = 0.20·Z(Dot%) - 0.20·Z(Econ_press) + 0.20·Z(DeathWkts) + 0.20·Z(PartBreakWkts) + 0.20·Z(WinningHauls)
-          </div>
-          <p class="formula-logic">
-            Balances run containment (Econ_press) and defensive execution (Dot %) with lethal strike-point delivery: extracting wickets at the death (overs 16–20), severing 30+ momentum stands, and converting multi-wicket spells into match victories.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       Master Comparison Tables for Unstop Reference
-       ========================================================================== -->
-  <section class="table-section" id="master-tables">
-    <div class="dossier-header-bar reveal-fade">
-      <h2 class="dossier-headline">Official Master Submission Matrices</h2>
-      <p class="dossier-sub">
-        Side-by-side technical benchmarks formatted to exactly match the official Unstop submission dropdown selections.
+      <h2 class="section-title">Master Submission Comparison Tables</h2>
+      <p class="section-lead">
+        Side-by-side technical telemetry formatted to match the official Unstop submission dropdown selections.
       </p>
     </div>
 
     <!-- Batters Master Table -->
-    <div class="table-wrapper reveal-fade" style="margin-bottom: 3.5rem;">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Batter Name</th>
-            <th>Hand</th>
-            <th>Role Archetype</th>
-            <th>Pressure Balls</th>
-            <th>Pressure Runs</th>
-            <th>Pressure SR</th>
-            <th>Death SR (16–20)</th>
-            <th>Dot %</th>
-            <th>Boundary %</th>
-            <th>Chase Finishes</th>
-            <th>Balls / Dismissal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="table-rank">#1</td>
-            <td class="table-player-cell"><img src="assets/players/tim_david.jpg" class="table-thumb" alt=""> Tim David</td>
-            <td>RHB</td>
-            <td>Death Power Hitter / Finisher</td>
-            <td class="tabular">828</td>
-            <td class="tabular">1,503</td>
-            <td class="tabular highlight-badge">181.52</td>
-            <td class="tabular">199.81</td>
-            <td class="tabular">30.4%</td>
-            <td class="tabular">25.7%</td>
-            <td class="tabular">15</td>
-            <td class="tabular">16.9</td>
-          </tr>
-          <tr>
-            <td class="table-rank">#2</td>
-            <td class="table-player-cell"><img src="assets/players/tilak_varma.jpg" class="table-thumb" alt=""> Namboori Tilak Varma</td>
-            <td>LHB</td>
-            <td>Crisis Finisher / Chase Master</td>
-            <td class="tabular">1,465</td>
-            <td class="tabular">2,190</td>
-            <td class="tabular">149.49</td>
-            <td class="tabular">191.88</td>
-            <td class="tabular">30.4%</td>
-            <td class="tabular">18.8%</td>
-            <td class="tabular highlight-badge">21 (Most in IPL)</td>
-            <td class="tabular">27.1</td>
-          </tr>
-          <tr>
-            <td class="table-rank">#3</td>
-            <td class="table-player-cell"><img src="assets/players/virat_kohli.jpg" class="table-thumb" alt=""> Virat Kohli</td>
-            <td>RHB</td>
-            <td>Master Anchor / Chase Specialist</td>
-            <td class="tabular">896</td>
-            <td class="tabular">1,413</td>
-            <td class="tabular">157.70</td>
-            <td class="tabular">186.53</td>
-            <td class="tabular">27.7%</td>
-            <td class="tabular">21.5%</td>
-            <td class="tabular">9</td>
-            <td class="tabular highlight-green">27.2 (Wicket Anchor)</td>
-          </tr>
-          <tr>
-            <td class="table-rank">#4</td>
-            <td class="table-player-cell"><img src="assets/players/rajat_patidar.jpg" class="table-thumb" alt=""> Rajat Patidar</td>
-            <td>RHB</td>
-            <td>Middle-to-Death Spin Enforcer</td>
-            <td class="tabular">461</td>
-            <td class="tabular">739</td>
-            <td class="tabular">160.30</td>
-            <td class="tabular highlight-badge">217.00 (Elite)</td>
-            <td class="tabular">32.5%</td>
-            <td class="tabular">22.3%</td>
-            <td class="tabular">1</td>
-            <td class="tabular">17.1</td>
-          </tr>
-          <tr>
-            <td class="table-rank">#5</td>
-            <td class="table-player-cell"><img src="assets/players/heinrich_klaasen.jpg" class="table-thumb" alt=""> Heinrich Klaasen</td>
-            <td>RHB</td>
-            <td>Zero-Dot Spin Demolisher</td>
-            <td class="tabular">864</td>
-            <td class="tabular">1,500</td>
-            <td class="tabular">173.61</td>
-            <td class="tabular">198.97</td>
-            <td class="tabular highlight-green">25.3% (Elite)</td>
-            <td class="tabular">23.0%</td>
-            <td class="tabular">5</td>
-            <td class="tabular">20.6</td>
-          </tr>
-          <tr>
-            <td class="table-rank">#6</td>
-            <td class="table-player-cell"><img src="assets/players/tristan_stubbs.png" class="table-thumb" alt=""> Tristan Stubbs</td>
-            <td>RHB</td>
-            <td>360° Strike Rotator & Closer</td>
-            <td class="tabular">709</td>
-            <td class="tabular">1,168</td>
-            <td class="tabular">164.74</td>
-            <td class="tabular">196.16</td>
-            <td class="tabular highlight-green">24.1% (Lowest)</td>
-            <td class="tabular">21.2%</td>
-            <td class="tabular">10</td>
-            <td class="tabular">23.6</td>
-          </tr>
-          <tr>
-            <td class="table-rank">#7</td>
-            <td class="table-player-cell"><img src="assets/players/vaibhav_sooryavanshi.jpg" class="table-thumb" alt=""> Vaibhav Sooryavanshi</td>
-            <td>LHB</td>
-            <td>Generational Boundary Disruptor</td>
-            <td class="tabular">232</td>
-            <td class="tabular">530</td>
-            <td class="tabular highlight-badge">228.45 (Highest)</td>
-            <td class="tabular">290.00</td>
-            <td class="tabular">35.8%</td>
-            <td class="tabular highlight-badge">38.8% (Highest)</td>
-            <td class="tabular">0</td>
-            <td class="tabular">29.0</td>
-          </tr>
-          <tr>
-            <td class="table-rank">#8</td>
-            <td class="table-player-cell"><img src="assets/players/nicholas_pooran.png" class="table-thumb" alt=""> Nicholas Pooran</td>
-            <td>LHB</td>
-            <td>Explosive Left-Handed Finisher</td>
-            <td class="tabular">1,010</td>
-            <td class="tabular">1,672</td>
-            <td class="tabular">165.54</td>
-            <td class="tabular">190.07</td>
-            <td class="tabular">33.9%</td>
-            <td class="tabular">23.5%</td>
-            <td class="tabular">12</td>
-            <td class="tabular">21.0</td>
-          </tr>
-          <tr>
-            <td class="table-rank">#9</td>
-            <td class="table-player-cell"><img src="assets/players/david_miller.png" class="table-thumb" alt=""> David Miller</td>
-            <td>LHB</td>
-            <td>Veteran Closer / Ice-Man</td>
-            <td class="tabular">901</td>
-            <td class="tabular">1,421</td>
-            <td class="tabular">157.71</td>
-            <td class="tabular">174.07</td>
-            <td class="tabular">28.3%</td>
-            <td class="tabular">20.3%</td>
-            <td class="tabular">15</td>
-            <td class="tabular">21.5</td>
-          </tr>
-          <tr>
-            <td class="table-rank">#10</td>
-            <td class="table-player-cell"><img src="assets/players/suryakumar_yadav.jpg" class="table-thumb" alt=""> Suryakumar Yadav</td>
-            <td>RHB</td>
-            <td>360° Match Winner / Enforcer</td>
-            <td class="tabular">1,301</td>
-            <td class="tabular highlight-badge">2,289 (Most)</td>
-            <td class="tabular">175.94</td>
-            <td class="tabular">217.22</td>
-            <td class="tabular">31.4%</td>
-            <td class="tabular">26.7%</td>
-            <td class="tabular">12</td>
-            <td class="tabular">21.7</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="table-card">
+      <div class="table-card-header">
+        <div class="table-card-title">🏏 Top 10 Batters Under Pressure (Official Unstop Roster)</div>
+        <div class="table-card-badge">QUALIFYING SAMPLE: &ge; 150 PRESSURE BALLS</div>
+      </div>
+      <div class="table-responsive-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Player Name</th>
+              <th>Style</th>
+              <th>Role Archetype</th>
+              <th>Pressure Balls</th>
+              <th>Pressure Runs</th>
+              <th>Pressure SR</th>
+              <th>Death SR (16–20)</th>
+              <th>Dot %</th>
+              <th>Boundary %</th>
+              <th>Chase Finishes</th>
+              <th>Balls / Dismissal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table-rank">#01</td>
+              <td class="table-player-cell"><img src="assets/players/tim_david.jpg" class="table-avatar" alt=""> Tim David</td>
+              <td>RHB</td>
+              <td>Death Power Hitter / Finisher</td>
+              <td class="tabular">828</td>
+              <td class="tabular">1,503</td>
+              <td class="tabular highlight-badge">181.52</td>
+              <td class="tabular">199.81</td>
+              <td class="tabular">30.4%</td>
+              <td class="tabular">25.7%</td>
+              <td class="tabular">15</td>
+              <td class="tabular">16.9</td>
+            </tr>
+            <tr>
+              <td class="table-rank">#02</td>
+              <td class="table-player-cell"><img src="assets/players/tilak_varma.jpg" class="table-avatar" alt=""> Namboori Tilak Varma</td>
+              <td>LHB</td>
+              <td>Crisis Finisher / Chase Master</td>
+              <td class="tabular">1,465</td>
+              <td class="tabular">2,190</td>
+              <td class="tabular">149.49</td>
+              <td class="tabular">191.88</td>
+              <td class="tabular">30.4%</td>
+              <td class="tabular">18.8%</td>
+              <td class="tabular highlight-badge">21 (Most in IPL)</td>
+              <td class="tabular">27.1</td>
+            </tr>
+            <tr>
+              <td class="table-rank">#03</td>
+              <td class="table-player-cell"><img src="assets/players/virat_kohli.jpg" class="table-avatar" alt=""> Virat Kohli</td>
+              <td>RHB</td>
+              <td>Master Anchor / Chase Specialist</td>
+              <td class="tabular">896</td>
+              <td class="tabular">1,413</td>
+              <td class="tabular">157.70</td>
+              <td class="tabular">186.53</td>
+              <td class="tabular">27.7%</td>
+              <td class="tabular">21.5%</td>
+              <td class="tabular">9</td>
+              <td class="tabular highlight-green">27.2 (Wicket Anchor)</td>
+            </tr>
+            <tr>
+              <td class="table-rank">#04</td>
+              <td class="table-player-cell"><img src="assets/players/rajat_patidar.png" class="table-avatar" alt=""> Rajat Patidar</td>
+              <td>RHB</td>
+              <td>Middle-to-Death Spin Enforcer</td>
+              <td class="tabular">461</td>
+              <td class="tabular">739</td>
+              <td class="tabular">160.30</td>
+              <td class="tabular highlight-badge">217.00 (Elite)</td>
+              <td class="tabular">32.5%</td>
+              <td class="tabular">22.3%</td>
+              <td class="tabular">1</td>
+              <td class="tabular">17.1</td>
+            </tr>
+            <tr>
+              <td class="table-rank">#05</td>
+              <td class="table-player-cell"><img src="assets/players/heinrich_klaasen.jpg" class="table-avatar" alt=""> Heinrich Klaasen</td>
+              <td>RHB</td>
+              <td>Zero-Dot Spin Demolisher</td>
+              <td class="tabular">864</td>
+              <td class="tabular">1,500</td>
+              <td class="tabular">173.61</td>
+              <td class="tabular">198.97</td>
+              <td class="tabular highlight-green">25.3% (Elite)</td>
+              <td class="tabular">23.0%</td>
+              <td class="tabular">5</td>
+              <td class="tabular">20.6</td>
+            </tr>
+            <tr>
+              <td class="table-rank">#06</td>
+              <td class="table-player-cell"><img src="assets/players/tristan_stubbs.png" class="table-avatar" alt=""> Tristan Stubbs</td>
+              <td>RHB</td>
+              <td>360° Strike Rotator & Closer</td>
+              <td class="tabular">709</td>
+              <td class="tabular">1,168</td>
+              <td class="tabular">164.74</td>
+              <td class="tabular">196.16</td>
+              <td class="tabular highlight-green">24.1% (Lowest)</td>
+              <td class="tabular">21.2%</td>
+              <td class="tabular">10</td>
+              <td class="tabular">23.6</td>
+            </tr>
+            <tr>
+              <td class="table-rank">#07</td>
+              <td class="table-player-cell"><img src="assets/players/vaibhav_sooryavanshi.jpg" class="table-avatar" alt=""> Vaibhav Sooryavanshi</td>
+              <td>LHB</td>
+              <td>Generational Boundary Disruptor</td>
+              <td class="tabular">232</td>
+              <td class="tabular">530</td>
+              <td class="tabular highlight-badge">228.45 (Highest)</td>
+              <td class="tabular">290.00</td>
+              <td class="tabular">35.8%</td>
+              <td class="tabular highlight-badge">38.8% (Highest)</td>
+              <td class="tabular">0</td>
+              <td class="tabular">29.0</td>
+            </tr>
+            <tr>
+              <td class="table-rank">#08</td>
+              <td class="table-player-cell"><img src="assets/players/nicholas_pooran.png" class="table-avatar" alt=""> Nicholas Pooran</td>
+              <td>LHB</td>
+              <td>Explosive Left-Handed Finisher</td>
+              <td class="tabular">1,010</td>
+              <td class="tabular">1,672</td>
+              <td class="tabular">165.54</td>
+              <td class="tabular">190.07</td>
+              <td class="tabular">33.9%</td>
+              <td class="tabular">23.5%</td>
+              <td class="tabular">12</td>
+              <td class="tabular">21.0</td>
+            </tr>
+            <tr>
+              <td class="table-rank">#09</td>
+              <td class="table-player-cell"><img src="assets/players/david_miller.png" class="table-avatar" alt=""> David Miller</td>
+              <td>LHB</td>
+              <td>Veteran Closer / Ice-Man</td>
+              <td class="tabular">901</td>
+              <td class="tabular">1,421</td>
+              <td class="tabular">157.71</td>
+              <td class="tabular">174.07</td>
+              <td class="tabular">28.3%</td>
+              <td class="tabular">20.3%</td>
+              <td class="tabular">15</td>
+              <td class="tabular">21.5</td>
+            </tr>
+            <tr>
+              <td class="table-rank">#10</td>
+              <td class="table-player-cell"><img src="assets/players/suryakumar_yadav.jpg" class="table-avatar" alt=""> Suryakumar Yadav</td>
+              <td>RHB</td>
+              <td>360° Match Winner / Enforcer</td>
+              <td class="tabular">1,301</td>
+              <td class="tabular highlight-badge">2,289 (Most)</td>
+              <td class="tabular">175.94</td>
+              <td class="tabular">217.22</td>
+              <td class="tabular">31.4%</td>
+              <td class="tabular">26.7%</td>
+              <td class="tabular">12</td>
+              <td class="tabular">21.7</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- Bowlers Master Table -->
-    <div class="table-wrapper reveal-fade">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Bowler Name</th>
-            <th>Bowling Style</th>
-            <th>Pace / Spin</th>
-            <th>Pressure Balls</th>
-            <th>Pressure Econ</th>
-            <th>Death Econ (16–20)</th>
-            <th>Dot %</th>
-            <th>Total Wkts</th>
-            <th>Death Wkts</th>
-            <th>Part. Breakers</th>
-            <th>Winning Hauls</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="table-rank" style="color: var(--verdigris-mint);">#1</td>
-            <td class="table-player-cell"><img src="assets/players/josh_hazlewood.jpg" class="table-thumb" alt=""> Josh Hazlewood</td>
-            <td>Right-arm fast-medium</td>
-            <td>Pace</td>
-            <td class="tabular">847</td>
-            <td class="tabular">8.17</td>
-            <td class="tabular">9.47</td>
-            <td class="tabular highlight-badge">43.4% (Highest)</td>
-            <td class="tabular">62</td>
-            <td class="tabular">30</td>
-            <td class="tabular">8</td>
-            <td class="tabular">14</td>
-          </tr>
-          <tr>
-            <td class="table-rank" style="color: var(--verdigris-mint);">#2</td>
-            <td class="table-player-cell"><img src="assets/players/jasprit_bumrah.jpg" class="table-thumb" alt=""> Jasprit Bumrah</td>
-            <td>Right-arm Fast</td>
-            <td>Pace</td>
-            <td class="tabular">957</td>
-            <td class="tabular highlight-green">7.00 (Elite)</td>
-            <td class="tabular highlight-green">7.19 (Lowest)</td>
-            <td class="tabular">42.5%</td>
-            <td class="tabular">52</td>
-            <td class="tabular">35</td>
-            <td class="tabular">13</td>
-            <td class="tabular">12</td>
-          </tr>
-          <tr>
-            <td class="table-rank" style="color: var(--verdigris-mint);">#3</td>
-            <td class="table-player-cell"><img src="assets/players/arshdeep_singh.jpg" class="table-thumb" alt=""> Arshdeep Singh</td>
-            <td>Left-arm medium-fast</td>
-            <td>Pace</td>
-            <td class="tabular">1,585</td>
-            <td class="tabular">8.81</td>
-            <td class="tabular">9.46</td>
-            <td class="tabular">36.8%</td>
-            <td class="tabular highlight-badge">109 (Most in IPL)</td>
-            <td class="tabular highlight-badge">75 (Most in IPL)</td>
-            <td class="tabular highlight-badge">33 (Most in IPL)</td>
-            <td class="tabular">18</td>
-          </tr>
-          <tr>
-            <td class="table-rank" style="color: var(--verdigris-mint);">#4</td>
-            <td class="table-player-cell"><img src="assets/players/rashid_khan.jpg" class="table-thumb" alt=""> Rashid Khan</td>
-            <td>Right-arm Leg-Break</td>
-            <td>Spin</td>
-            <td class="tabular">1,386</td>
-            <td class="tabular">7.46</td>
-            <td class="tabular">8.63</td>
-            <td class="tabular">36.0%</td>
-            <td class="tabular">86</td>
-            <td class="tabular">51</td>
-            <td class="tabular">22</td>
-            <td class="tabular highlight-badge">19 (Most in IPL)</td>
-          </tr>
-          <tr>
-            <td class="table-rank" style="color: var(--verdigris-mint);">#5</td>
-            <td class="table-player-cell"><img src="assets/players/bhuvneshwar_kumar.jpg" class="table-thumb" alt=""> Bhuvneshwar Kumar</td>
-            <td>Right-arm medium</td>
-            <td>Pace</td>
-            <td class="tabular">1,144</td>
-            <td class="tabular">8.56</td>
-            <td class="tabular">9.63</td>
-            <td class="tabular">36.0%</td>
-            <td class="tabular">61</td>
-            <td class="tabular">42</td>
-            <td class="tabular">17</td>
-            <td class="tabular">9</td>
-          </tr>
-          <tr>
-            <td class="table-rank" style="color: var(--verdigris-mint);">#6</td>
-            <td class="table-player-cell"><img src="assets/players/yuzvendra_chahal.jpg" class="table-thumb" alt=""> Yuzvendra Chahal</td>
-            <td>Right-arm Leg-Break</td>
-            <td>Spin</td>
-            <td class="tabular">1,230</td>
-            <td class="tabular">8.77</td>
-            <td class="tabular">9.91</td>
-            <td class="tabular">29.9%</td>
-            <td class="tabular">76</td>
-            <td class="tabular">34</td>
-            <td class="tabular">23</td>
-            <td class="tabular">14</td>
-          </tr>
-          <tr>
-            <td class="table-rank" style="color: var(--verdigris-mint);">#7</td>
-            <td class="table-player-cell"><img src="assets/players/matheesha_pathirana.png" class="table-thumb" alt=""> Matheesha Pathirana</td>
-            <td>Right-arm Fast (Sling)</td>
-            <td>Pace</td>
-            <td class="tabular">693</td>
-            <td class="tabular">7.70</td>
-            <td class="tabular highlight-green">8.18</td>
-            <td class="tabular">37.4%</td>
-            <td class="tabular">57</td>
-            <td class="tabular">44 (in 693 balls)</td>
-            <td class="tabular">15</td>
-            <td class="tabular">8</td>
-          </tr>
-          <tr>
-            <td class="table-rank" style="color: var(--verdigris-mint);">#8</td>
-            <td class="table-player-cell"><img src="assets/players/wanindu_hasaranga.jpg" class="table-thumb" alt=""> Wanindu Hasaranga</td>
-            <td>Right-arm Leg-Break</td>
-            <td>Spin</td>
-            <td class="tabular">895</td>
-            <td class="tabular">8.27</td>
-            <td class="tabular">8.38</td>
-            <td class="tabular">36.1%</td>
-            <td class="tabular">73</td>
-            <td class="tabular">27</td>
-            <td class="tabular">23</td>
-            <td class="tabular">14</td>
-          </tr>
-          <tr>
-            <td class="table-rank" style="color: var(--verdigris-mint);">#9</td>
-            <td class="table-player-cell"><img src="assets/players/jason_holder.jpg" class="table-thumb" alt=""> Jason Holder</td>
-            <td>Right-arm medium-fast</td>
-            <td>Pace</td>
-            <td class="tabular">1,077</td>
-            <td class="tabular">8.59</td>
-            <td class="tabular">9.82</td>
-            <td class="tabular">33.8%</td>
-            <td class="tabular">70</td>
-            <td class="tabular">43</td>
-            <td class="tabular">19</td>
-            <td class="tabular">11</td>
-          </tr>
-          <tr>
-            <td class="table-rank" style="color: var(--verdigris-mint);">#10</td>
-            <td class="table-player-cell"><img src="assets/players/krunal_pandya.png" class="table-thumb" alt=""> Krunal Pandya</td>
-            <td>Slow left-arm orthodox</td>
-            <td>Spin</td>
-            <td class="tabular">581</td>
-            <td class="tabular highlight-green">7.39</td>
-            <td class="tabular">10.09</td>
-            <td class="tabular">32.7%</td>
-            <td class="tabular">28</td>
-            <td class="tabular">5</td>
-            <td class="tabular">9</td>
-            <td class="tabular">7</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="table-card" style="margin-top: 2.5rem;">
+      <div class="table-card-header">
+        <div class="table-card-title">🎯 Top 10 Bowlers Under Pressure (Official Unstop Roster)</div>
+        <div class="table-card-badge color-cyan">QUALIFYING SAMPLE: &ge; 180 PRESSURE BALLS</div>
+      </div>
+      <div class="table-responsive-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Player Name</th>
+              <th>Style</th>
+              <th>Pace / Spin</th>
+              <th>Pressure Balls</th>
+              <th>Pressure Econ</th>
+              <th>Death Econ (16–20)</th>
+              <th>Dot %</th>
+              <th>Total Wkts</th>
+              <th>Death Wkts</th>
+              <th>Part. Breakers</th>
+              <th>Winning Hauls</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table-rank color-cyan">#01</td>
+              <td class="table-player-cell"><img src="assets/players/josh_hazlewood.jpg" class="table-avatar" alt=""> Josh Hazlewood</td>
+              <td>Right-arm fast-medium</td>
+              <td>Pace</td>
+              <td class="tabular">847</td>
+              <td class="tabular">8.17</td>
+              <td class="tabular">9.47</td>
+              <td class="tabular highlight-badge">43.4% (Highest)</td>
+              <td class="tabular">62</td>
+              <td class="tabular">30</td>
+              <td class="tabular">8</td>
+              <td class="tabular">14</td>
+            </tr>
+            <tr>
+              <td class="table-rank color-cyan">#02</td>
+              <td class="table-player-cell"><img src="assets/players/jasprit_bumrah.jpg" class="table-avatar" alt=""> Jasprit Bumrah</td>
+              <td>Right-arm Fast</td>
+              <td>Pace</td>
+              <td class="tabular">957</td>
+              <td class="tabular highlight-green">7.00 (Elite)</td>
+              <td class="tabular highlight-green">7.19 (Lowest)</td>
+              <td class="tabular">42.5%</td>
+              <td class="tabular">52</td>
+              <td class="tabular">35</td>
+              <td class="tabular">13</td>
+              <td class="tabular">12</td>
+            </tr>
+            <tr>
+              <td class="table-rank color-cyan">#03</td>
+              <td class="table-player-cell"><img src="assets/players/arshdeep_singh.jpg" class="table-avatar" alt=""> Arshdeep Singh</td>
+              <td>Left-arm medium-fast</td>
+              <td>Pace</td>
+              <td class="tabular">1,585</td>
+              <td class="tabular">8.81</td>
+              <td class="tabular">9.46</td>
+              <td class="tabular">36.8%</td>
+              <td class="tabular highlight-badge">109 (Most in IPL)</td>
+              <td class="tabular highlight-badge">75 (Most in IPL)</td>
+              <td class="tabular highlight-badge">33 (Most in IPL)</td>
+              <td class="tabular">18</td>
+            </tr>
+            <tr>
+              <td class="table-rank color-cyan">#04</td>
+              <td class="table-player-cell"><img src="assets/players/rashid_khan.jpg" class="table-avatar" alt=""> Rashid Khan</td>
+              <td>Right-arm Leg-Break</td>
+              <td>Spin</td>
+              <td class="tabular">1,386</td>
+              <td class="tabular">7.46</td>
+              <td class="tabular">8.63</td>
+              <td class="tabular">36.0%</td>
+              <td class="tabular">86</td>
+              <td class="tabular">51</td>
+              <td class="tabular">22</td>
+              <td class="tabular highlight-badge">19 (Most in IPL)</td>
+            </tr>
+            <tr>
+              <td class="table-rank color-cyan">#05</td>
+              <td class="table-player-cell"><img src="assets/players/bhuvneshwar_kumar.jpg" class="table-avatar" alt=""> Bhuvneshwar Kumar</td>
+              <td>Right-arm medium</td>
+              <td>Pace</td>
+              <td class="tabular">1,144</td>
+              <td class="tabular">8.56</td>
+              <td class="tabular">9.63</td>
+              <td class="tabular">36.0%</td>
+              <td class="tabular">61</td>
+              <td class="tabular">42</td>
+              <td class="tabular">17</td>
+              <td class="tabular">9</td>
+            </tr>
+            <tr>
+              <td class="table-rank color-cyan">#06</td>
+              <td class="table-player-cell"><img src="assets/players/yuzvendra_chahal.jpg" class="table-avatar" alt=""> Yuzvendra Chahal</td>
+              <td>Right-arm Leg-Break</td>
+              <td>Spin</td>
+              <td class="tabular">1,230</td>
+              <td class="tabular">8.77</td>
+              <td class="tabular">9.91</td>
+              <td class="tabular">29.9%</td>
+              <td class="tabular">76</td>
+              <td class="tabular">34</td>
+              <td class="tabular">23</td>
+              <td class="tabular">14</td>
+            </tr>
+            <tr>
+              <td class="table-rank color-cyan">#07</td>
+              <td class="table-player-cell"><img src="assets/players/matheesha_pathirana.png" class="table-avatar" alt=""> Matheesha Pathirana</td>
+              <td>Right-arm Fast (Sling)</td>
+              <td>Pace</td>
+              <td class="tabular">693</td>
+              <td class="tabular">7.70</td>
+              <td class="tabular highlight-green">8.18</td>
+              <td class="tabular">37.4%</td>
+              <td class="tabular">57</td>
+              <td class="tabular">44 (in 693 balls)</td>
+              <td class="tabular">15</td>
+              <td class="tabular">8</td>
+            </tr>
+            <tr>
+              <td class="table-rank color-cyan">#08</td>
+              <td class="table-player-cell"><img src="assets/players/wanindu_hasaranga.jpg" class="table-avatar" alt=""> Wanindu Hasaranga</td>
+              <td>Right-arm Leg-Break</td>
+              <td>Spin</td>
+              <td class="tabular">895</td>
+              <td class="tabular">8.27</td>
+              <td class="tabular">8.38</td>
+              <td class="tabular">36.1%</td>
+              <td class="tabular">73</td>
+              <td class="tabular">27</td>
+              <td class="tabular">23</td>
+              <td class="tabular">14</td>
+            </tr>
+            <tr>
+              <td class="table-rank color-cyan">#09</td>
+              <td class="table-player-cell"><img src="assets/players/jason_holder.jpg" class="table-avatar" alt=""> Jason Holder</td>
+              <td>Right-arm medium-fast</td>
+              <td>Pace</td>
+              <td class="tabular">1,077</td>
+              <td class="tabular">8.59</td>
+              <td class="tabular">9.82</td>
+              <td class="tabular">33.8%</td>
+              <td class="tabular">70</td>
+              <td class="tabular">43</td>
+              <td class="tabular">19</td>
+              <td class="tabular">11</td>
+            </tr>
+            <tr>
+              <td class="table-rank color-cyan">#10</td>
+              <td class="table-player-cell"><img src="assets/players/krunal_pandya.png" class="table-avatar" alt=""> Krunal Pandya</td>
+              <td>Slow left-arm orthodox</td>
+              <td>Spin</td>
+              <td class="tabular">581</td>
+              <td class="tabular highlight-green">7.39</td>
+              <td class="tabular">10.09</td>
+              <td class="tabular">32.7%</td>
+              <td class="tabular">28</td>
+              <td class="tabular">5</td>
+              <td class="tabular">9</td>
+              <td class="tabular">7</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       Scientific Reliability & Validation Proof
+       SCIENTIFIC RELIABILITY & SPLIT-HALF VALIDATION PROOF
        ========================================================================== -->
-  <section class="table-section" id="validation-proof">
-    <div class="dossier-header-bar reveal-fade">
-      <div class="hero-pretitle">
-        <span>🔬 Empirical Validation</span>
+  <section class="section-container" id="validation-proof">
+    <div class="section-header">
+      <div class="section-tag-pill">
+        <span class="tag-dot"></span>
+        <span>SCIENTIFIC RIGOR // SPLIT-HALF CROSS-VALIDATION</span>
       </div>
-      <h2 class="dossier-headline">Split-Half Scientific Cross-Validation</h2>
-      <p class="dossier-sub">
-        Proof that rankings reflect repeatable, individual player traits under crisis rather than statistical variance (evaluated across odd/even matches, N &asymp; 190 qualified players).
+      <h2 class="section-title">Split-Half Reliability & Statistical Proof</h2>
+      <p class="section-lead">
+        Proof that rankings reflect repeatable, individual player traits under crisis rather than random match variance 
+        (evaluated across odd/even matches, $N \approx 190$ qualified players).
       </p>
     </div>
 
-    <div class="table-wrapper reveal-fade">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Evaluated Metric</th>
-            <th>Pearson Correlation (r)</th>
-            <th>Spearman Rank (&rho;)</th>
-            <th>p-value</th>
-            <th>Statistical Conclusion</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Batter Pressure Strike Rate</strong></td>
-            <td class="tabular highlight-badge">0.341</td>
-            <td class="tabular">0.321</td>
-            <td class="tabular">&lt; 1.2 &times; 10<sup>&minus;6</sup></td>
-            <td>High stability across independent matches</td>
-          </tr>
-          <tr>
-            <td><strong>Batter Dot-Ball Resistance</strong></td>
-            <td class="tabular highlight-green">0.382</td>
-            <td class="tabular">0.365</td>
-            <td class="tabular">&lt; 4.1 &times; 10<sup>&minus;8</sup></td>
-            <td>Extremely stable individual characteristic under pressure</td>
-          </tr>
-          <tr>
-            <td><strong>Bowler Field Execution (Dot %)</strong></td>
-            <td class="tabular highlight-badge">0.344</td>
-            <td class="tabular">0.328</td>
-            <td class="tabular">&lt; 9.1 &times; 10<sup>&minus;7</sup></td>
-            <td>Confirms field execution is a repeatable bowling skill</td>
-          </tr>
-          <tr>
-            <td><strong>Bowler Death Wicket Rate</strong></td>
-            <td class="tabular highlight-badge">0.315</td>
-            <td class="tabular">0.302</td>
-            <td class="tabular">&lt; 3.5 &times; 10<sup>&minus;5</sup></td>
-            <td>Genuine clutch wicket-taking capability at the death</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="table-card">
+      <div class="table-card-header">
+        <div class="table-card-title">🔬 Statistical Cross-Validation Matrix (Odd vs. Even Match Cohorts)</div>
+        <div class="table-card-badge">SIGNIFICANCE LEVEL: $\alpha = 0.001$</div>
+      </div>
+      <div class="table-responsive-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Evaluated Telemetry Metric</th>
+              <th>Pearson Correlation ($r$)</th>
+              <th>Spearman Rank ($\rho$)</th>
+              <th>$p$-value</th>
+              <th>Statistical Rigor Conclusion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Batter Pressure Strike Rate</strong></td>
+              <td class="tabular highlight-badge">0.341</td>
+              <td class="tabular">0.321</td>
+              <td class="tabular">&lt; 1.2 &times; 10<sup>&minus;6</sup></td>
+              <td>High stability across independent match environments</td>
+            </tr>
+            <tr>
+              <td><strong>Batter Dot-Ball Resistance</strong></td>
+              <td class="tabular highlight-green">0.382</td>
+              <td class="tabular">0.365</td>
+              <td class="tabular">&lt; 4.1 &times; 10<sup>&minus;8</sup></td>
+              <td>Extremely stable individual characteristic under pressure</td>
+            </tr>
+            <tr>
+              <td><strong>Bowler Field Execution (Dot %)</strong></td>
+              <td class="tabular highlight-badge">0.344</td>
+              <td class="tabular">0.328</td>
+              <td class="tabular">&lt; 9.1 &times; 10<sup>&minus;7</sup></td>
+              <td>Confirms field execution is a repeatable bowling skill</td>
+            </tr>
+            <tr>
+              <td><strong>Bowler Death Wicket Rate</strong></td>
+              <td class="tabular highlight-badge">0.315</td>
+              <td class="tabular">0.302</td>
+              <td class="tabular">&lt; 3.5 &times; 10<sup>&minus;5</sup></td>
+              <td>Genuine clutch wicket-taking capability at the death</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       Footer
+       FOOTER
        ========================================================================== -->
-  <footer>
-    <div class="footer-content">
-      <img src="assets/rr-logo.png" alt="Rajasthan Royals" class="footer-crest">
-      <div style="line-height: 1.6;">
-        <strong>Rajasthan Royals SupeRR Selector Season 2 | Official Analytics Think-Tank</strong><br>
-        Dual-Engine Win-Probability Model &middot; Deployed Live on Netlify &middot; Pushed to GitHub
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-brand-row">
+        <div class="brand-badge-box">RR</div>
+        <div class="footer-info">
+          <div class="footer-title">Rajasthan Royals — SupeRR Selector Season 2</div>
+          <div class="footer-sub">Official Analytics Think-Tank Telemetry Platform &middot; Built for RRHACKATHON</div>
+        </div>
+      </div>
+
+      <div class="footer-meta-row">
+        <span class="footer-tag">200,999 Deliveries</span>
+        <span class="footer-sep">&middot;</span>
+        <span class="footer-tag">Dual-Engine Win Probability</span>
+        <span class="footer-sep">&middot;</span>
+        <span class="footer-tag">Split-Half Validated</span>
+        <span class="footer-sep">&middot;</span>
+        <span class="footer-tag">Live on Netlify</span>
       </div>
     </div>
   </footer>
