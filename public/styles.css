@@ -1,39 +1,47 @@
 /* ==========================================================================
    RRHACKATHON | SupeRR Selector Season 2
    Elite Cricket Telemetry & Think-Tank Intelligence Platform
-   Neo-Kinpaku System (Lacquer Black, Kinpaku Gold & Verdigris Patina)
-   Designed to the highest taste floor: 100% Matte, Architectural, Typographic
+   Authentic Discipline Brand Color Architecture & Dynamic Stadium Atmosphere
    ========================================================================== */
 
 :root {
-  /* Brand Anchors - Neo Kinpaku System (No Pink, No Royal Blue) */
-  --kinpaku-gold: #f59e0b;          /* Primary Accent / Batters / Gold */
-  --kinpaku-gold-hover: #d97706;
-  --kinpaku-gold-soft: rgba(245, 158, 11, 0.08);
-  --kinpaku-gold-border: rgba(245, 158, 11, 0.4);
+  /* Authentic Discipline 01: Batting Identity (Power, Fire, Velocity, Closers) */
+  --solar-amber: #f59e0b;
+  --solar-amber-bright: #fbbf24;
+  --solar-amber-deep: #d97706;
+  --solar-amber-soft: rgba(245, 158, 11, 0.12);
+  --solar-amber-border: rgba(245, 158, 11, 0.40);
+  --solar-amber-glow: rgba(245, 158, 11, 0.20);
 
-  --verdigris-mint: #10b981;        /* Secondary Accent / Bowlers / Telemetry */
-  --verdigris-mint-hover: #059669;
-  --verdigris-mint-soft: rgba(16, 185, 129, 0.08);
-  --verdigris-mint-border: rgba(16, 185, 129, 0.4);
+  /* Authentic Discipline 02: Bowling Identity (Ice Precision, Yorkers, Stranglehold) */
+  --electric-cyan: #00f0ff;
+  --electric-cyan-bright: #38bdf8;
+  --electric-cyan-deep: #0284c7;
+  --electric-cyan-soft: rgba(0, 240, 255, 0.12);
+  --electric-cyan-border: rgba(0, 240, 255, 0.40);
+  --electric-cyan-glow: rgba(0, 240, 255, 0.20);
 
-  /* Deep Lacquer Dark Surfaces - 100% Matte, Architectural Restraint */
-  --lacquer-black: #090b10;         /* Ground Canvas */
-  --lacquer-deep: #06070b;          /* Deepest Inset */
-  --lacquer-surface: #11141e;       /* Card Surface */
-  --lacquer-raised: #161b28;        /* Hover / Raised */
-  --lacquer-tile: #0c0f17;          /* Telemetry Metric Inset */
+  /* Telemetry Secondary Accents */
+  --telemetry-mint: #10b981;
+  --telemetry-mint-soft: rgba(16, 185, 129, 0.12);
+  --arctic-teal: #14b8a6;
+  --royal-indigo: #6366f1;
 
-  /* Architectural Hairlines */
-  --border-subtle: #1d2334;
-  --border-medium: #2a334a;
+  /* Atmospheric Surfaces & Glassmorphism */
+  --canvas-pitch: #07090e;
+  --surface-glass: rgba(17, 22, 34, 0.78);
+  --surface-raised: rgba(24, 31, 48, 0.88);
+  --tile-inset: rgba(10, 14, 23, 0.85);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
 
   /* Editorial Typography Ramp */
-  --text-pure: #ffffff;             /* Headlines & Key Values */
-  --text-high: #f1f5f9;             /* Subheadings & Numbers */
-  --text-body: #cbd5e1;             /* Editorial Analysis Body */
-  --text-muted: #8d9bb0;            /* Field Labels & Secondary Meta */
-  --text-dim: #5a687d;              /* Muted Captions */
+  --text-pure: #ffffff;
+  --text-high: #f1f5f9;
+  --text-body: #cbd5e1;
+  --text-muted: #8d9bb0;
+  --text-dim: #5a687d;
 
   --ease-out-quint: cubic-bezier(.23, 1, .32, 1);
   --transition-smooth: all 250ms var(--ease-out-quint);
@@ -48,15 +56,31 @@
 html {
   scroll-behavior: smooth;
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: var(--lacquer-black);
+  background-color: var(--canvas-pitch);
   color: var(--text-high);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
+/* ==========================================================================
+   Atmospheric Canvas Background with Multi-Layer Colored Aura Lighting
+   ========================================================================== */
 body {
   min-height: 100vh;
-  background-color: var(--lacquer-black);
+  background-color: var(--canvas-pitch);
+  background-image:
+    /* Solar Amber Aura (Batters side - Top Left) */
+    radial-gradient(circle at 16% 12%, rgba(245, 158, 11, 0.17) 0%, transparent 42%),
+    /* Electric Cyan Aura (Bowlers side - Top Right) */
+    radial-gradient(circle at 84% 15%, rgba(6, 182, 212, 0.17) 0%, transparent 44%),
+    /* Midnight Royal Stadium Center Ambient Light */
+    radial-gradient(circle at 50% 45%, rgba(30, 58, 138, 0.22) 0%, transparent 58%),
+    /* Telemetry Emerald Depth (Bottom Center) */
+    radial-gradient(circle at 70% 80%, rgba(16, 185, 129, 0.14) 0%, transparent 50%),
+    /* Tactical Dot Matrix Grid Pattern */
+    radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 36px 36px;
+  background-attachment: fixed;
   color: var(--text-high);
   overflow-x: hidden;
 }
@@ -67,15 +91,15 @@ body {
 }
 
 .gold-text {
-  color: var(--kinpaku-gold) !important;
+  color: var(--solar-amber-bright) !important;
 }
 
 .mint-text {
-  color: var(--verdigris-mint) !important;
+  color: var(--electric-cyan) !important;
 }
 
 /* ==========================================================================
-   Navigation Bar - Clean Matte Editorial Chrome
+   Navigation Bar - Frosted Glass Chrome
    ========================================================================== */
 .main-nav {
   position: sticky;
@@ -85,9 +109,9 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem 2.5rem;
-  background: rgba(9, 11, 16, 0.94);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(7, 9, 14, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -102,7 +126,7 @@ body {
   width: 28px;
   height: 28px;
   object-fit: contain;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .brand-text {
@@ -143,14 +167,14 @@ body {
 
 .nav-item:hover, .nav-item.active {
   color: var(--text-pure);
-  border-bottom-color: var(--kinpaku-gold);
+  border-bottom-color: var(--solar-amber);
 }
 
 .nav-status {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--lacquer-surface);
+  background: var(--surface-glass);
   border: 1px solid var(--border-subtle);
   padding: 0.4rem 0.85rem;
   border-radius: 9999px;
@@ -163,20 +187,21 @@ body {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--verdigris-mint);
+  background: var(--electric-cyan);
+  box-shadow: 0 0 8px var(--electric-cyan);
 }
 
 /* ==========================================================================
-   Hero Section: Editorial Sports Intelligence Landing Stage
+   Hero Section: Stadium Floodlights & Master Blaster Action Backdrop
    ========================================================================== */
 .hero-stage {
   position: relative;
-  min-height: 84vh;
+  min-height: 92vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 5rem 1.5rem 4rem;
+  padding: 6rem 1.5rem 5rem;
   overflow: hidden;
 }
 
@@ -193,57 +218,62 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.22;
-  filter: contrast(110%) brightness(70%);
+  opacity: 0.55;
+  filter: contrast(125%) brightness(95%) saturate(125%);
+  mix-blend-mode: screen;
 }
 
 .hero-action-backdrop {
   position: absolute;
-  right: -5%;
-  bottom: -5%;
-  width: 55%;
-  max-width: 750px;
-  height: 100%;
+  right: -2%;
+  bottom: -4%;
+  width: 58%;
+  max-width: 820px;
+  height: 105%;
   object-fit: cover;
-  opacity: 0.16;
-  mask-image: radial-gradient(circle at 60% 50%, black 25%, transparent 75%);
-  -webkit-mask-image: radial-gradient(circle at 60% 50%, black 25%, transparent 75%);
+  opacity: 0.40;
+  filter: contrast(135%) brightness(110%);
+  mask-image: radial-gradient(circle at 65% 50%, black 35%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at 65% 50%, black 35%, transparent 75%);
 }
 
 .hero-gradient-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(9, 11, 16, 0.82) 0%, rgba(9, 11, 16, 0.95) 75%, #090b10 100%);
+  background:
+    radial-gradient(circle at 50% 20%, rgba(6, 182, 212, 0.22) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(7, 9, 14, 0.40) 0%, rgba(7, 9, 14, 0.85) 70%, #07090e 100%);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 980px;
+  max-width: 1040px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 .hero-pretitle {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.4rem 1.1rem;
+  padding: 0.45rem 1.25rem;
   border-radius: 9999px;
-  background: var(--lacquer-surface);
-  border: 1px solid var(--border-medium);
+  background: rgba(17, 22, 34, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--solar-amber-border);
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--kinpaku-gold);
+  color: var(--solar-amber-bright);
 }
 
 .hero-headline {
-  font-size: clamp(2.3rem, 5.2vw, 3.8rem);
+  font-size: clamp(2.4rem, 5.6vw, 4.2rem);
   font-weight: 900;
   line-height: 1.12;
   letter-spacing: -0.03em;
@@ -251,19 +281,106 @@ body {
 }
 
 .hero-headline .gold-span {
-  color: var(--kinpaku-gold);
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-headline .mint-span {
-  color: var(--verdigris-mint);
+  background: linear-gradient(135deg, #a5f3fc 0%, #00f0ff 50%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-lead {
-  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
   color: var(--text-body);
-  max-width: 820px;
+  max-width: 840px;
   line-height: 1.7;
   font-weight: 400;
+}
+
+/* ==========================================================================
+   Hero Quick-Jump Discipline Action Cluster (Grand Interactive Entry)
+   ========================================================================== */
+.hero-actions-cluster {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 940px;
+  margin-top: 0.5rem;
+}
+
+.hero-action-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 1.25rem 1.4rem;
+  border-radius: 14px;
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-medium);
+  text-decoration: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 250ms var(--ease-out-quint),
+              border-color 250ms var(--ease-out-quint),
+              box-shadow 250ms var(--ease-out-quint);
+}
+
+.hero-action-pill:hover {
+  transform: translateY(-4px);
+}
+
+.hero-action-pill.pill-batters {
+  border-left: 3px solid var(--solar-amber);
+}
+
+.hero-action-pill.pill-batters:hover {
+  border-color: var(--solar-amber);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px var(--solar-amber-glow);
+}
+
+.hero-action-pill.pill-bowlers {
+  border-left: 3px solid var(--electric-cyan);
+}
+
+.hero-action-pill.pill-bowlers:hover {
+  border-color: var(--electric-cyan);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px var(--electric-cyan-glow);
+}
+
+.hero-action-pill.pill-pipeline {
+  border-left: 3px solid var(--royal-indigo);
+}
+
+.hero-action-pill.pill-pipeline:hover {
+  border-color: var(--royal-indigo);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(99, 102, 241, 0.25);
+}
+
+.pill-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.pill-main {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-pure);
+  margin-top: 0.2rem;
+}
+
+.pill-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
 }
 
 /* Leverage Metric Banner */
@@ -272,30 +389,32 @@ body {
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   width: 100%;
-  max-width: 900px;
-  margin-top: 1.5rem;
+  max-width: 940px;
+  margin-top: 1.25rem;
 }
 
 .leverage-tile,
 .leverage-stat {
-  background: var(--lacquer-surface);
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
-  padding: 1.1rem 1rem;
+  padding: 1.15rem 1rem;
   text-align: left;
   transition: var(--transition-smooth);
 }
 
 .leverage-tile:hover,
 .leverage-stat:hover {
-  background: var(--lacquer-raised);
+  background: var(--surface-raised);
   border-color: var(--border-medium);
 }
 
 .leverage-val,
 .leverage-num {
-  font-size: 1.6rem;
-  font-weight: 800;
+  font-size: 1.65rem;
+  font-weight: 900;
   color: var(--text-pure);
 }
 
@@ -309,7 +428,7 @@ body {
 }
 
 /* ==========================================================================
-   Primary Switcher: Batters vs Bowlers (Solid Kinpaku & Verdigris Controls)
+   Primary Switcher: Batters vs Bowlers
    ========================================================================== */
 .roster-switch-section,
 .roster-section {
@@ -323,12 +442,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--lacquer-surface);
-  border: 1px solid var(--border-subtle);
+  background: rgba(17, 22, 34, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-medium);
   border-radius: 9999px;
   padding: 6px;
   gap: 8px;
-  max-width: 620px;
+  max-width: 640px;
   margin: 0 auto;
 }
 
@@ -339,23 +460,23 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.85rem 1.6rem;
   border-radius: 9999px;
   border: none;
   background: transparent;
   color: var(--text-muted);
   font-family: inherit;
-  font-size: 0.92rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 800;
   letter-spacing: 0.02em;
   cursor: pointer;
   transition: var(--transition-smooth);
 }
 
 .switch-btn .count-pill {
-  font-size: 0.68rem;
+  font-size: 0.70rem;
   font-weight: 600;
-  opacity: 0.75;
+  opacity: 0.85;
 }
 
 .switch-btn:hover {
@@ -364,14 +485,16 @@ body {
 
 .switch-btn.active#switchBatters,
 .switch-btn.active.batters-btn {
-  background: var(--kinpaku-gold);
-  color: #090b10;
+  background: linear-gradient(135deg, var(--solar-amber), var(--solar-amber-deep));
+  color: #07090e;
+  box-shadow: 0 4px 18px var(--solar-amber-glow);
 }
 
 .switch-btn.active#switchBowlers,
 .switch-btn.active.bowlers-btn {
-  background: var(--verdigris-mint);
-  color: #090b10;
+  background: linear-gradient(135deg, var(--electric-cyan), var(--electric-cyan-deep));
+  color: #07090e;
+  box-shadow: 0 4px 18px var(--electric-cyan-glow);
 }
 
 /* Dossier Section Header */
@@ -387,23 +510,35 @@ body {
 }
 
 .dossier-headline {
-  font-size: 2.1rem;
+  font-size: 2.2rem;
   font-weight: 900;
   letter-spacing: -0.02em;
   color: var(--text-pure);
   margin-bottom: 0.6rem;
 }
 
+.dossier-headline .headline-fire {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dossier-headline .headline-ice {
+  background: linear-gradient(135deg, #a5f3fc 0%, #00f0ff 50%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .dossier-sub {
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   color: var(--text-muted);
-  max-width: 780px;
+  max-width: 800px;
   margin: 0 auto;
   line-height: 1.6;
 }
 
 /* ==========================================================================
-   Player Telemetry Cards - Pure Matte, High-Taste Editorial Design
+   Player Telemetry Cards - Authentic Discipline Color Identity
    ========================================================================== */
 .dossier-list,
 .dossier-container {
@@ -417,17 +552,41 @@ body {
   grid-template-columns: 280px 1fr;
   gap: 3rem;
   align-items: flex-start;
-  background: var(--lacquer-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 18px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
   padding: 2.5rem;
-  transition: transform 250ms var(--ease-out-quint), border-color 250ms var(--ease-out-quint);
+  transition: transform 250ms var(--ease-out-quint),
+              border-color 250ms var(--ease-out-quint),
+              box-shadow 250ms var(--ease-out-quint);
 }
 
 .player-telemetry-card:hover {
-  transform: translateY(-3px);
-  background: var(--lacquer-raised);
-  border-color: var(--border-medium);
+  transform: translateY(-4px);
+}
+
+/* Authentic Batter Card Theme (Solar Amber / Fire) */
+.player-telemetry-card.discipline-batter {
+  background: linear-gradient(145deg, rgba(28, 22, 14, 0.82) 0%, rgba(15, 19, 28, 0.90) 100%);
+  border: 1px solid var(--solar-amber-border);
+  border-left: 4px solid var(--solar-amber);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 25px var(--solar-amber-soft);
+}
+
+.player-telemetry-card.discipline-batter:hover {
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.65), 0 0 35px var(--solar-amber-glow);
+}
+
+/* Authentic Bowler Card Theme (Electric Cyan / Ice) */
+.player-telemetry-card.discipline-bowler {
+  background: linear-gradient(145deg, rgba(10, 26, 42, 0.82) 0%, rgba(15, 19, 28, 0.90) 100%);
+  border: 1px solid var(--electric-cyan-border);
+  border-left: 4px solid var(--electric-cyan);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 25px var(--electric-cyan-soft);
+}
+
+.player-telemetry-card.discipline-bowler:hover {
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.65), 0 0 35px var(--electric-cyan-glow);
 }
 
 /* Alternating Zig-Zag Layout */
@@ -459,22 +618,31 @@ body {
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  background: var(--lacquer-black);
-  border: 1px solid var(--kinpaku-gold-border);
-  padding: 0.35rem 0.9rem;
+  padding: 0.35rem 0.95rem;
   border-radius: 9999px;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 800;
-  color: var(--kinpaku-gold);
   letter-spacing: 0.05em;
   white-space: nowrap;
+}
+
+.rank-badge-pill.badge-batter {
+  background: #1c150a;
+  border: 1px solid var(--solar-amber);
+  color: var(--solar-amber-bright);
+}
+
+.rank-badge-pill.badge-bowler {
+  background: #071927;
+  border: 1px solid var(--electric-cyan);
+  color: var(--electric-cyan-bright);
 }
 
 .ball-cutout-frame {
   width: 240px;
   height: 240px;
   border-radius: 50%;
-  background: var(--lacquer-deep);
+  background: var(--canvas-pitch);
   border: 2px solid var(--border-medium);
   position: relative;
   overflow: hidden;
@@ -483,11 +651,21 @@ body {
   justify-content: center;
 }
 
+.discipline-batter .ball-cutout-frame {
+  border-color: var(--solar-amber-border);
+  box-shadow: 0 0 20px var(--solar-amber-soft);
+}
+
+.discipline-bowler .ball-cutout-frame {
+  border-color: var(--electric-cyan-border);
+  box-shadow: 0 0 20px var(--electric-cyan-soft);
+}
+
 .cricket-seam-arc {
   position: absolute;
   inset: 6px;
   border-radius: 50%;
-  border: 2px dashed rgba(255, 255, 255, 0.18);
+  border: 2px dashed rgba(255, 255, 255, 0.22);
   pointer-events: none;
   z-index: 2;
 }
@@ -530,8 +708,12 @@ body {
   color: var(--text-muted);
 }
 
-.role-archetype-tag .role-pill {
-  color: var(--kinpaku-gold);
+.discipline-batter .role-pill {
+  color: var(--solar-amber-bright);
+}
+
+.discipline-bowler .role-pill {
+  color: var(--electric-cyan);
 }
 
 .role-archetype-tag .meta-dot {
@@ -539,7 +721,7 @@ body {
 }
 
 .player-title-name {
-  font-size: 2.1rem;
+  font-size: 2.15rem;
   font-weight: 900;
   letter-spacing: -0.025em;
   color: var(--text-pure);
@@ -550,18 +732,22 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: var(--lacquer-tile);
+  background: var(--tile-inset);
   border: 1px solid var(--border-subtle);
   border-radius: 8px;
-  padding: 0.45rem 0.85rem;
+  padding: 0.45rem 0.9rem;
   margin-top: 0.25rem;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--text-high);
 }
 
-.superpower-icon {
-  color: var(--kinpaku-gold);
+.discipline-batter .superpower-icon {
+  color: var(--solar-amber);
+}
+
+.discipline-bowler .superpower-icon {
+  color: var(--electric-cyan);
 }
 
 /* ==========================================================================
@@ -574,10 +760,10 @@ body {
 }
 
 .gauge-card {
-  background: var(--lacquer-tile);
+  background: var(--tile-inset);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
-  padding: 1.1rem 1.25rem;
+  padding: 1.15rem 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
@@ -590,7 +776,7 @@ body {
 }
 
 .gauge-title {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -598,15 +784,15 @@ body {
 }
 
 .gauge-score {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 900;
   color: var(--text-pure);
 }
 
 .gauge-track {
   width: 100%;
-  height: 6px;
-  background: #182030;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 9999px;
   overflow: hidden;
 }
@@ -617,12 +803,21 @@ body {
   transition: width 600ms var(--ease-out-quint);
 }
 
-.gauge-fill.fill-primary {
-  background: var(--kinpaku-gold);
+/* Authentic Fill Colors */
+.gauge-fill.fill-solar-amber {
+  background: linear-gradient(90deg, #ea580c, var(--solar-amber));
 }
 
-.gauge-fill.fill-secondary {
-  background: var(--verdigris-mint);
+.gauge-fill.fill-telemetry-mint {
+  background: linear-gradient(90deg, #059669, var(--telemetry-mint));
+}
+
+.gauge-fill.fill-electric-cyan {
+  background: linear-gradient(90deg, #0284c7, var(--electric-cyan));
+}
+
+.gauge-fill.fill-arctic-teal {
+  background: linear-gradient(90deg, #0d9488, var(--arctic-teal));
 }
 
 .gauge-footer {
@@ -632,10 +827,17 @@ body {
 }
 
 .gauge-delta {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
   font-family: 'JetBrains Mono', monospace;
-  color: var(--verdigris-mint);
+}
+
+.discipline-batter .gauge-delta {
+  color: var(--solar-amber-bright);
+}
+
+.discipline-bowler .gauge-delta {
+  color: var(--electric-cyan);
 }
 
 /* ==========================================================================
@@ -648,10 +850,10 @@ body {
 }
 
 .telemetry-cell {
-  background: var(--lacquer-tile);
+  background: var(--tile-inset);
   border: 1px solid var(--border-subtle);
   border-radius: 10px;
-  padding: 0.85rem 1rem;
+  padding: 0.9rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
@@ -666,7 +868,7 @@ body {
 }
 
 .cell-value {
-  font-size: 1.18rem;
+  font-size: 1.2rem;
   font-weight: 900;
   color: var(--text-pure);
 }
@@ -686,21 +888,29 @@ body {
 }
 
 .intel-block {
-  background: var(--lacquer-tile);
+  background: var(--tile-inset);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
-  padding: 1.15rem 1.35rem;
+  padding: 1.2rem 1.4rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.intel-block.scout-block {
-  border-left: 3px solid var(--kinpaku-gold);
+.discipline-batter .intel-block.scout-block {
+  border-left: 3px solid var(--solar-amber);
 }
 
-.intel-block.metrics-block {
-  border-left: 3px solid var(--verdigris-mint);
+.discipline-batter .intel-block.metrics-block {
+  border-left: 3px solid var(--solar-amber-bright);
+}
+
+.discipline-bowler .intel-block.scout-block {
+  border-left: 3px solid var(--electric-cyan);
+}
+
+.discipline-bowler .intel-block.metrics-block {
+  border-left: 3px solid var(--electric-cyan-bright);
 }
 
 .intel-header {
@@ -714,18 +924,26 @@ body {
 }
 
 .intel-title {
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.scout-block .intel-title {
-  color: var(--kinpaku-gold);
+.discipline-batter .scout-block .intel-title {
+  color: var(--solar-amber-bright);
 }
 
-.metrics-block .intel-title {
-  color: var(--verdigris-mint);
+.discipline-batter .metrics-block .intel-title {
+  color: var(--solar-amber);
+}
+
+.discipline-bowler .scout-block .intel-title {
+  color: var(--electric-cyan-bright);
+}
+
+.discipline-bowler .metrics-block .intel-title {
+  color: var(--electric-cyan);
 }
 
 .intel-content {
@@ -761,7 +979,9 @@ body {
 
 .flow-step-box,
 .flowchart-step {
-  background: var(--lacquer-surface);
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-subtle);
   border-radius: 14px;
   padding: 1.6rem 1.35rem;
@@ -773,7 +993,7 @@ body {
 
 .flow-step-box:hover,
 .flowchart-step:hover {
-  background: var(--lacquer-raised);
+  background: var(--surface-raised);
   border-color: var(--border-medium);
 }
 
@@ -783,7 +1003,7 @@ body {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--kinpaku-gold);
+  color: var(--solar-amber-bright);
 }
 
 .flow-step-title,
@@ -809,7 +1029,9 @@ body {
 }
 
 .formula-card {
-  background: var(--lacquer-surface);
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-subtle);
   border-radius: 14px;
   padding: 1.75rem;
@@ -834,12 +1056,12 @@ body {
 
 .formula-equation,
 .formula-codebox {
-  background: var(--lacquer-black);
+  background: var(--tile-inset);
   border: 1px solid var(--border-subtle);
   border-radius: 8px;
   padding: 1rem 1.15rem;
   font-size: 0.85rem;
-  color: var(--kinpaku-gold);
+  color: var(--solar-amber-bright);
   line-height: 1.5;
   overflow-x: auto;
 }
@@ -883,7 +1105,9 @@ body {
 .table-wrapper,
 .table-scroll-container {
   overflow-x: auto;
-  background: var(--lacquer-surface);
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-subtle);
   border-radius: 14px;
   margin-bottom: 3.5rem;
@@ -899,7 +1123,7 @@ body {
 
 .data-table th,
 .unstop-data-table th {
-  background: var(--lacquer-tile);
+  background: var(--tile-inset);
   color: var(--text-muted);
   font-weight: 700;
   font-size: 0.72rem;
@@ -920,7 +1144,7 @@ body {
 
 .data-table tr:hover td,
 .unstop-data-table tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.03);
   color: var(--text-pure);
 }
 
@@ -942,17 +1166,17 @@ body {
 
 .table-rank {
   font-weight: 800;
-  color: var(--kinpaku-gold);
+  color: var(--solar-amber-bright);
 }
 
 .highlight-badge {
   font-weight: 800;
-  color: var(--kinpaku-gold);
+  color: var(--solar-amber-bright);
 }
 
 .highlight-green {
   font-weight: 800;
-  color: var(--verdigris-mint);
+  color: var(--electric-cyan);
 }
 
 /* ==========================================================================
@@ -973,7 +1197,9 @@ body {
 }
 
 .validation-card {
-  background: var(--lacquer-surface);
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   padding: 1.5rem;
@@ -985,7 +1211,7 @@ body {
 .val-metric-num {
   font-size: 1.8rem;
   font-weight: 900;
-  color: var(--verdigris-mint);
+  color: var(--electric-cyan);
 }
 
 .val-metric-title {
@@ -1042,7 +1268,7 @@ body {
    ========================================================================== */
 footer {
   border-top: 1px solid var(--border-subtle);
-  background: var(--lacquer-deep);
+  background: rgba(7, 9, 14, 0.95);
   padding: 3rem 2rem 2.5rem;
   text-align: center;
   color: var(--text-dim);
@@ -1074,6 +1300,10 @@ footer {
    Responsive Adaptations
    ========================================================================== */
 @media (max-width: 1024px) {
+  .hero-actions-cluster {
+    grid-template-columns: 1fr;
+  }
+
   .player-telemetry-card,
   .player-telemetry-card.even-row {
     grid-template-columns: 1fr;
@@ -1130,7 +1360,7 @@ footer {
   }
 
   .hero-stage {
-    padding: 4rem 1.25rem 3rem;
+    padding: 4.5rem 1.25rem 3.5rem;
   }
 
   .leverage-banner {

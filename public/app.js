@@ -1,7 +1,7 @@
 /**
  * RRHACKATHON | SupeRR Selector Season 2
- * Elite Sports Telemetry & Think-Tank Intelligence Platform
- * Neo-Kinpaku High-Taste Edition
+ * Elite Cricket Telemetry & Think-Tank Intelligence Platform
+ * Authentic Discipline Color Edition (Solar Amber for Batters, Electric Cyan for Bowlers)
  */
 
 const BATTERS_ROSTER = [
@@ -942,11 +942,15 @@ function renderRoster() {
 
   const isBatters = currentRosterMode === 'batters';
   const dataset = isBatters ? BATTERS_ROSTER : BOWLERS_ROSTER;
+  const disciplineClass = isBatters ? 'discipline-batter' : 'discipline-bowler';
+  const badgeClass = isBatters ? 'badge-batter' : 'badge-bowler';
+  const primaryFillClass = isBatters ? 'fill-solar-amber' : 'fill-electric-cyan';
+  const secondaryFillClass = isBatters ? 'fill-telemetry-mint' : 'fill-arctic-teal';
 
   if (sectionHeadlineEl) {
     sectionHeadlineEl.innerHTML = isBatters
-      ? `<span>TOP 10 BATTERS UNDER PRESSURE</span>`
-      : `<span>TOP 10 BOWLERS UNDER PRESSURE</span>`;
+      ? `<span class="headline-fire">🏏 TOP 10 BATTERS UNDER PRESSURE</span>`
+      : `<span class="headline-ice">🎯 TOP 10 BOWLERS UNDER PRESSURE</span>`;
   }
   if (sectionSubEl) {
     sectionSubEl.textContent = isBatters
@@ -961,11 +965,11 @@ function renderRoster() {
     const rankPadded = String(player.rank).padStart(2, '0');
 
     return `
-      <article class="player-telemetry-card ${rowClass} ${animationClass}" id="player-${player.rank}">
+      <article class="player-telemetry-card ${rowClass} ${disciplineClass} ${animationClass}" id="player-${player.rank}">
 
         <!-- Visual Media Anchor -->
         <div class="card-visual-anchor">
-          <div class="rank-badge-pill">
+          <div class="rank-badge-pill ${badgeClass}">
             <span class="rank-num">#${rankPadded}</span>
           </div>
 
@@ -986,7 +990,7 @@ function renderRoster() {
           <!-- Header: Role & Identification -->
           <div class="player-header-bar">
             <div class="role-archetype-tag">
-              <span class="role-pill">${isBatters ? 'BATTER' : 'BOWLER'}</span>
+              <span class="role-pill">${isBatters ? '🏏 BATTER' : '🎯 BOWLER'}</span>
               <span class="meta-dot">/</span>
               <span class="role-name">${isBatters ? player.hand : player.style}</span>
             </div>
@@ -994,7 +998,7 @@ function renderRoster() {
             <h3 class="player-title-name">${player.name}</h3>
 
             <div class="superpower-pill">
-              <span class="superpower-icon">⚡</span>
+              <span class="superpower-icon">${isBatters ? '🔥' : '⚡'}</span>
               <span class="superpower-text">${player.superpower}</span>
             </div>
           </div>
@@ -1008,7 +1012,7 @@ function renderRoster() {
                 <span class="gauge-score tabular">${player.bar1.value}</span>
               </div>
               <div class="gauge-track">
-                <div class="gauge-fill fill-primary" style="width: ${player.bar1.percent}%;"></div>
+                <div class="gauge-fill ${primaryFillClass}" style="width: ${player.bar1.percent}%;"></div>
               </div>
               <div class="gauge-footer">
                 <span class="gauge-delta">${player.bar1.delta}</span>
@@ -1022,7 +1026,7 @@ function renderRoster() {
                 <span class="gauge-score tabular">${player.bar2.value}</span>
               </div>
               <div class="gauge-track">
-                <div class="gauge-fill fill-secondary" style="width: ${player.bar2.percent}%;"></div>
+                <div class="gauge-fill ${secondaryFillClass}" style="width: ${player.bar2.percent}%;"></div>
               </div>
               <div class="gauge-footer">
                 <span class="gauge-delta">${player.bar2.delta}</span>
@@ -1090,25 +1094,43 @@ function observeScrollReveals() {
   elements.forEach(el => observer.observe(el));
 }
 
+function setRosterMode(mode) {
+  if (currentRosterMode === mode) return;
+  currentRosterMode = mode;
+  if (mode === 'batters') {
+    if (switchBattersBtn) switchBattersBtn.classList.add('active');
+    if (switchBowlersBtn) switchBowlersBtn.classList.remove('active');
+  } else {
+    if (switchBowlersBtn) switchBowlersBtn.classList.add('active');
+    if (switchBattersBtn) switchBattersBtn.classList.remove('active');
+  }
+  renderRoster();
+}
+
+// Global Switcher Hooks for Hero Buttons
+window.switchToBattersAndScroll = function() {
+  setRosterMode('batters');
+  const target = document.getElementById('roster-view');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+};
+
+window.switchToBowlersAndScroll = function() {
+  setRosterMode('bowlers');
+  const target = document.getElementById('roster-view');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+};
+
 function setupSwitcher() {
   if (switchBattersBtn) {
-    switchBattersBtn.addEventListener('click', () => {
-      if (currentRosterMode === 'batters') return;
-      currentRosterMode = 'batters';
-      switchBattersBtn.classList.add('active');
-      switchBowlersBtn.classList.remove('active');
-      renderRoster();
-    });
+    switchBattersBtn.addEventListener('click', () => setRosterMode('batters'));
   }
 
   if (switchBowlersBtn) {
-    switchBowlersBtn.addEventListener('click', () => {
-      if (currentRosterMode === 'bowlers') return;
-      currentRosterMode = 'bowlers';
-      switchBowlersBtn.classList.add('active');
-      switchBattersBtn.classList.remove('active');
-      renderRoster();
-    });
+    switchBowlersBtn.addEventListener('click', () => setRosterMode('bowlers'));
   }
 }
 
